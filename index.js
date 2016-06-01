@@ -20,7 +20,7 @@ app.use(express.static('public'));
 app.use('/', require('./src/routes/index.js')());
 
 // launch ======================================================================
-app.listen(3001, function (err) {
+app.listen(3002, function (err) {
   if (err) console.log(err);
   console.log('running server on port ' + 3002);
 });
