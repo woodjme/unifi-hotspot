@@ -17,10 +17,10 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('public'));
 
 // routes ======================================================================
-app.use('/', require('./src/routes/index.js')());
+app.use('/guest/s/default/', require('./src/routes/index.js')());
 
 // launch ======================================================================
-app.listen(3002, function (err) {
+app.listen(80, function (err) {
   if (err) console.log(err);
-  console.log('running server on port ' + 3002);
+  console.log('running server on port ' + 80);
 });
