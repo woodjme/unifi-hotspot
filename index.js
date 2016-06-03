@@ -10,10 +10,10 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 // Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//   extended: true
+// }));
 app.use(express.static('public'));
 
 // routes ======================================================================

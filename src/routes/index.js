@@ -5,7 +5,7 @@ const indexRouter = express.Router();
 module.exports = function () {
     indexRouter.route('/')
     .get(function(req, res){
-       res.send("hello"); 
+    res.render('./index.ejs');
        console.log(req.query);
     });
  return indexRouter;   
