@@ -4,9 +4,14 @@ const indexRouter = express.Router();
 
 module.exports = function () {
     indexRouter.route('/')
-    .get(function(req, res){
-    res.render('./index.ejs');
-       console.log(req.query);
-    });
- return indexRouter;   
+        .get(function (req, res) {
+            req.session.macAddr = req.query.id;
+            req.session.accessPoint = req.query.ap;
+            req.session.time = req.query.t;
+            req.session.url = req.query.url;
+            req.session.ssid = req.query.ssid;
+            
+            res.render('./index.ejs');
+        });
+    return indexRouter;
 };

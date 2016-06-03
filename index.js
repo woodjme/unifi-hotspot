@@ -1,6 +1,7 @@
 'use strict';
 // call depenancies and configs ================================================
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const bodyParser = require('body-parser');
 
@@ -15,6 +16,11 @@ app.set('view engine', 'ejs');
 //   extended: true
 // }));
 app.use(express.static('public'));
+app.use(require('express-session')({
+  secret: 'verySecretKey',
+  resave: true,
+  saveUninitialized: true
+}));
 
 // routes ======================================================================
 app.use('/guest/s/default/', require('./src/routes/index.js')());
