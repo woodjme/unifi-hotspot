@@ -17,12 +17,13 @@ module.exports = function () {
                 jar: true,
                 body: {
                     username: username,
-                    password: password,
+                    password: password
                 },
                 agentOptions: {
                     rejectUnauthorized: false //Allow Self-signed cert
                 }
             }, function (err, response, body) {
+                if (err) { console.log(err.stack); }
                 console.log(body);
                 request({
                     method: 'POST',
@@ -31,12 +32,13 @@ module.exports = function () {
                     jar: true,
                     body: {
                         cmd: 'authorize-guest',
-                        mac: req.session.macAddr,
+                        mac: req.session.macAddr
                     },
                     agentOptions: {
                         rejectUnauthorized: false //Allow Self-signed cert
                     }
                 }, function (err, response, body) {
+                    if (err) { console.log(err.stack); }
                     console.log(body);
                     res.redirect('https://google.co.uk');
                     request({
@@ -47,6 +49,7 @@ module.exports = function () {
                             rejectUnauthorized: false //Allow Self-signed cert
                         }
                     }, function (err, response, body) {
+                        if (err) { console.log(err.stack); }
                         console.log(body);
                     });
                 });
