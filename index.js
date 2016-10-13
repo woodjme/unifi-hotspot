@@ -1,8 +1,10 @@
 'use strict';
 // call depenancies and configs ================================================
+require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const app = express();
+
 
 // configuration ===============================================================
 // Set View engine to ejs

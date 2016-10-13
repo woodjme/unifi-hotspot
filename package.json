@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/woodjamie/unifi-hotspot#readme",
   "dependencies": {
+    "dotenv": "^2.0.0",
     "ejs": "^2.4.2",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
