@@ -1,6 +1,7 @@
 [![Dependency Status](https://david-dm.org/woodjamie/unifi-hotspot.svg)](https://david-dm.org/woodjamie/unifi-hotspot)
 [![Build Status](https://travis-ci.org/woodjamie/unifi-hotspot.svg?branch=master)](https://travis-ci.org/woodjamie/unifi-hotspot)
 [![Code Climate](https://codeclimate.com/github/woodjamie/unifi-hotspot/badges/gpa.svg)](https://codeclimate.com/github/woodjamie/unifi-hotspot)
+
 [![NPM](https://nodei.co/npm/unifi-hotspot.png)](https://nodei.co/npm/unifi-hotspot/)
 # unifi-hotspot
 A Node.JS based external portal server for authorising Wi-Fi guests on Unifi products.
