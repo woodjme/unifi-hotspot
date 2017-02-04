@@ -1,6 +1,5 @@
 'use strict';
 // call depenancies and configs ================================================
-require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const app = express();
@@ -24,7 +23,7 @@ app.use('/guest/s/default/', require('./src/routes/index.js')());
 app.use('/authorise', require('./src/routes/authorise.js')());
 
 // launch ======================================================================
-app.listen(80, function (err) {
+app.listen(process.env.port, function (err) {
   if (err) console.log(err);
-  console.log('running server on port ' + 80);
+  console.log('running server on port ' + process.env.port);
 });

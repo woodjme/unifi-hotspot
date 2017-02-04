@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,6 @@
   },
   "homepage": "https://github.com/woodjamie/unifi-hotspot#readme",
   "dependencies": {
-    "dotenv": "^2.0.0",
     "ejs": "^2.4.2",
     "express": "^4.13.4",
     "express-session": "^1.13.0",

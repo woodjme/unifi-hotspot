@@ -3,7 +3,6 @@ const express = require('express');
 const authoriseRouter = express.Router();
 const request = require('request');
 
-console.log();
 module.exports = function () {
     authoriseRouter.route('/')
         .post(function (req, res) {
