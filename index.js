@@ -23,7 +23,7 @@ app.use('/guest/s/default/', require('./src/routes/index.js')());
 app.use('/authorise', require('./src/routes/authorise.js')());
 
 // launch ======================================================================
-app.listen(process.env.port, function (err) {
+app.listen(process.env.PORT, function (err) {
   if (err) console.log(err);
-  console.log('running server on port ' + process.env.port);
+  console.log('running server on port ' + process.env.PORT);
 });
