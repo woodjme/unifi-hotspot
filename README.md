@@ -9,18 +9,7 @@ Currently tested with Unifi controller version 5.0.7
 
 ## Getting Started
 
-### Docker Support
-
-* Clone repo:
-* `git clone https://github.com/woodjamie/unifi-hotspot.git`
-* cd into repo:
-* `cd unifi-hotspot`
-* Set port in Dockerfile
-* `nano Dockerfile`
-* Build docker image:
-* `docker build -t "unifi-hotspot" .`
-
-#### Example starting docker container
+### Docker
 
 ```bash
 docker run -d \
@@ -29,7 +18,7 @@ docker run -d \
 -e password=password \
 -e uri=https://192.168.0.1:8443 \
 -e sitename=default \
-unifi-hotspot
+woodjme/unifi-hotspot
 ```
 
 ### Once started navigate to `http://localhost/guest/s/default/`
