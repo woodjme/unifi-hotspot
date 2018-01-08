@@ -24,7 +24,6 @@
     "ejs": "^2.5.5",
     "express": "^4.14.1",
     "express-session": "^1.15.0",
-    "gulp-nsp": "^2.4.2",
     "request": "^2.79.0"
   },
   "devDependencies": {
