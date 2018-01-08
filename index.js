@@ -1,16 +1,14 @@
-'use strict';
 // call depenancies and configs ================================================
 const express = require('express');
 const session = require('express-session');
 const app = express();
 
-
 // configuration ===============================================================
-// Set View engine to ejs
+  // set view engine to ejs
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-// Middleware
+// middleware
 app.use(express.static('public'));
 app.use(require('express-session')({
   secret: 'verySecretKey',
@@ -23,7 +21,7 @@ app.use('/guest/s/default/', require('./src/routes/index.js')());
 app.use('/authorise', require('./src/routes/authorise.js')());
 
 // launch ======================================================================
-app.listen(process.env.port, function (err) {
+app.listen(4545, function (err) {
   if (err) console.log(err);
-  console.log('running server on port ' + process.env.port);
+  console.log('running server on port ' + 4545);
 });

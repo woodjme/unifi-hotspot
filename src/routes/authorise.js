@@ -1,4 +1,3 @@
-'use strict';
 const express = require('express');
 const authoriseRouter = express.Router();
 const request = require('request');
@@ -19,8 +18,12 @@ module.exports = function () {
                     rejectUnauthorized: false //Allow Self-signed cert
                 }
             }, function (err, response, body) {
-                if (err) { console.log(err.stack); }
-                console.log(body);
+                if (err) {
+                    console.error(err.stack); 
+                    res.send('An error has occurred');
+                    return; 
+                }
+                console.info(body);
                 request({
                     method: 'POST',
                     uri: `${process.env.uri}/api/s/${process.env.sitename}/cmd/stamgr`,
@@ -34,8 +37,12 @@ module.exports = function () {
                         rejectUnauthorized: false //Allow Self-signed cert
                     }
                 }, function (err, response, body) {
-                    if (err) { console.log(err.stack); }
-                    console.log(body);
+                    if (err) {
+                        console.error(err.stack);
+                        res.send('An error has occurred');
+                        return; 
+                        }
+                    console.info(body);
                     res.redirect('https://google.co.uk');
                     request({
                         method: 'POST',
@@ -45,8 +52,11 @@ module.exports = function () {
                             rejectUnauthorized: false //Allow Self-signed cert
                         }
                     }, function (err, response, body) {
-                        if (err) { console.log(err.stack); }
-                        console.log(body);
+                        if (err) {
+                            console.error(err.stack);
+                            return;
+                        }
+                        console.info(body);
                     });
                 });
             });
