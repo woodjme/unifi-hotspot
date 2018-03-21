@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/woodjamie/unifi-hotspot.git"
+    "url": "git+https://github.com/woodjme/unifi-hotspot.git"
   },
   "keywords": [
     "Unifi"
@@ -17,9 +17,9 @@
   "author": "Jamie Wood",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/woodjamie/unifi-hotspot/issues"
+    "url": "https://github.com/woodjme/unifi-hotspot/issues"
   },
-  "homepage": "https://github.com/woodjamie/unifi-hotspot#readme",
+  "homepage": "https://github.com/woodjme/unifi-hotspot#readme",
   "dependencies": {
     "ejs": "^2.5.5",
     "express": "^4.14.1",
