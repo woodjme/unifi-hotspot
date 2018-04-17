@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-nsp": "^2.4.2"
+    "gulp-nsp": "^2.4.2",
+    "vuepress": "^0.5.1"
   }
 }
