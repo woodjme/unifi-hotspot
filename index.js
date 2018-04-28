@@ -6,7 +6,7 @@ const app = express();
 // middleware
 app.use(express.static('public'));
 app.use(require('express-session')({
-  secret: 'verySecretKey',
+  secret: process.env.secret,
   resave: true,
   saveUninitialized: true
 }));
