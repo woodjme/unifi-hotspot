@@ -9,8 +9,8 @@ module.exports = function () {
             req.session.time = req.query.t;
             req.session.url = req.query.url;
             req.session.ssid = req.query.ssid;
-            
-            res.render('./index.ejs');
+
+            res.sendFile('index');
         });
     return indexRouter;
 };

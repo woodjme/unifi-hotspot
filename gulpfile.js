@@ -1,5 +1,5 @@
-var gulp = require('gulp');
-var gulpNSP = require('gulp-nsp');
+const gulp = require('gulp');
+const gulpNSP = require('gulp-nsp');
 const path = require('path');
 
 gulp.task('default', ['nsp']);
