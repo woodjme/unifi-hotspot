@@ -16,11 +16,11 @@ To get started with docker you can use the command below as reference. The appli
 ```bash
 docker run -d \
 -p 80:4545 \
--e username=ubnt \
--e password=password \
--e uri=https://192.168.75.134:8443 \
--e sitename=default \
--e secret=secretString
+-e USERNAME=ubnt \
+-e PASSWORD=password \
+-e urURIi=https://192.168.75.134:8443 \
+-e SITENAME=default \
+-e SECRET=secretString
 woodjme/unifi-hotspot
 ```
 
