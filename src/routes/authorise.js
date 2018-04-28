@@ -7,12 +7,12 @@ module.exports = function () {
         .post(function (req, res) {
             request({
                 method: 'POST',
-                uri: `${process.env.uri}/api/login`,
+                uri: `${process.env.URI}/api/login`,
                 json: true,
                 jar: true,
                 body: {
-                    username: process.env.username,
-                    password: process.env.password
+                    username: process.env.USERNAME,
+                    password: process.env.PASSWORD
                 },
                 agentOptions: {
                     rejectUnauthorized: false //Allow Self-signed cert
@@ -26,7 +26,7 @@ module.exports = function () {
                 console.info(body);
                 request({
                     method: 'POST',
-                    uri: `${process.env.uri}/api/s/${process.env.sitename}/cmd/stamgr`,
+                    uri: `${process.env.URI}/api/s/${process.env.SITENAME}/cmd/stamgr`,
                     json: true,
                     jar: true,
                     body: {
@@ -46,7 +46,7 @@ module.exports = function () {
                     res.redirect('https://google.co.uk');
                     request({
                         method: 'POST',
-                        uri: `${process.env.uri}/logout`,
+                        uri: `${process.env.URI}/logout`,
                         jar: true,
                         agentOptions: {
                             rejectUnauthorized: false //Allow Self-signed cert
