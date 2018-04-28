@@ -23,9 +23,9 @@
   },
   "homepage": "https://github.com/woodjme/unifi-hotspot#readme",
   "dependencies": {
-    "express": "^4.14.1",
+    "express": "^4.16.3",
     "express-session": "^1.15.0",
-    "request": "^2.79.0"
+    "request": "^2.85.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
