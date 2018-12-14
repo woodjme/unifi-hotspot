@@ -10,9 +10,7 @@ module.exports = function () {
             req.session.url = req.query.url;
             req.session.ssid = req.query.ssid;
 
-            res.sendFile('index', {
-                root: __dirname + '/../../public'
-            });
+            res.sendFile(`${process.env.PWD}/public/index.html`);
         });
     return indexRouter;
 };
