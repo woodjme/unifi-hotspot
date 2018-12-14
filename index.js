@@ -12,7 +12,7 @@ app.use(require('express-session')({
 }));
 
 // routes ======================================================================
-app.use('/guest/s/default/', require('./src/routes/index.js')());
+app.use(`/guest/s/${process.env.SITENAME}/`, require('./src/routes/index.js')());
 app.use('/authorise', require('./src/routes/authorise.js')());
 
 // launch ======================================================================

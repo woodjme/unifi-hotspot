@@ -24,6 +24,6 @@ docker run -d \
 woodjme/unifi-hotspot
 ```
 
-Once started navigate to `http://localhost:80/guest/s/default/` to test splash page.
+Once started navigate to `http://localhost:80/guest/s/$sitename/` to test splash page.
 
 You then need to configure the unifi portal to look at this container. To do this go to the `Unifi Control panel` -> `Guest Control` -> `Enable Guest Control` -> `External Portal Server` -> Add the `ip address` or `DNS name` of your container host.
