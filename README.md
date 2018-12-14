@@ -18,9 +18,9 @@ docker run -d \
 -p 80:4545 \
 -e USERNAME=ubnt \
 -e PASSWORD=password \
--e URI=https://192.168.75.134:8443 \
+-e URI=https://unifi.jamiewood.io \
 -e SITENAME=default \
--e SECRET=secretString
+-e SECRET=secretString \
 woodjme/unifi-hotspot
 ```
 
