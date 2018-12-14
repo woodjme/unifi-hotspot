@@ -11,7 +11,7 @@ Currently tested with Unifi controller version 5.6.30
 
 ### Docker
 
-To get started with docker you can use the command below as reference. The application runs on port `4545` so which ever port you choose needs to be redirected to `4545`. You also need to provide a `username`, `password`, `uri` including protocol and port, and `sitename` of the Unifi server.
+To get started with docker you can use the command below as a reference. The application runs on port `4545` so whichever port you choose needs to be redirected to `4545`. You also need to provide a `username`, `password`, `uri` including protocol and port, and `sitename` of the Unifi server.
 
 ```bash
 docker run -d \
