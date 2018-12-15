@@ -22,7 +22,7 @@ module.exports = function () {
                     requestOptions.uri = `${process.env.URI}/api/s/${process.env.SITENAME}/cmd/stamgr`;
                     requestOptions.body = {
                         cmd: 'authorize-guest',
-                        mac: "00-14-22-01-23-45"
+                        mac: req.session.macAddr
                     };
                     return request(requestOptions);
                 })
@@ -32,7 +32,7 @@ module.exports = function () {
                     return request(requestOptions);
                 })
                 .then(logoutResp => {
-                    res.redirect('https://google.co.uk');
+                    res.redirect('https://google.com');
                 })
                 .catch(err => {
                     console.log(err);
