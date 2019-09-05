@@ -29,6 +29,6 @@
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
-    "vuepress": "^1.0.2"
+    "vuepress": "^1.0.3"
   }
 }
