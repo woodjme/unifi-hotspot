@@ -8,7 +8,7 @@ Currently tested with Unifi controller version 5.9.29
 
 ## Full Documentation
 
-[Docs](docs.unifi-hotspot.jamiewood.io)
+[Docs](https://docs.unifi-hotspot.jamiewood.io)
 
 ## Getting Started
 
