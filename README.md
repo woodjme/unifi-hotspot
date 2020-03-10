@@ -6,6 +6,10 @@
 The purpose of this repo is to provide a basic, barebones Node.js based external portal server for authorising Wi-Fi guests on Unifi products.
 Currently tested with Unifi controller version 5.9.29
 
+## Full Documentation
+
+[Docs](docs.unifi-hotspot.jamiewood.io)
+
 ## Getting Started
 
 ### Docker
