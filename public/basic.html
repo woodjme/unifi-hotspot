@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Portal Page - Basic Auth</title>
+    <style>
+        .centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <form class="centered" name="login" action="/authorise" method="post">
+        <label for="name">Name:</label>
+        <input id="name" type="text" name="name" required/>
+        <br />
+        <label for="email">Email:</label>
+        <input id="email" type="email" name="email" required/>
+        <br />
+        <input id="submit" type="submit" name="submit" value="Connect to Wi-Fi" />
+    </form>
+    <script>
+        window.onload = function () {
+            document.getElementById('submit').click()
+        }
+    </script>
+</body>
+</html>

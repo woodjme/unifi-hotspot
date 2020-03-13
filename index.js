@@ -1,21 +1,10 @@
-// dependencies  ===============================================================
-const express = require('express');
-const session = require('express-session');
-const app = express();
-
-// middleware
-app.use(express.static('public'));
-app.use(require('express-session')({
-  secret: process.env.SECRET,
-  resave: true,
-  saveUninitialized: true
-}));
-
-// routes ======================================================================
-app.use(`/guest/s/${process.env.SITENAME}/`, require('./src/routes/index.js')());
-app.use('/authorise', require('./src/routes/authorise.js')());
+const server = require('./src/server')
 
 // launch ======================================================================
-app.listen(4545, function (err) {
-  console.log('running server on port 4545');
-});
+server.listen(4545, function (err) {
+  if (!err) {
+    console.log('running server on port 4545')
+  } else {
+    console.error(err)
+  }
+})
