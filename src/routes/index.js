@@ -21,7 +21,7 @@ module.exports = function () {
           res.sendFile(`${process.env.PWD}/public/custom.html`)
           break
         default:
-          // res.sendFile(`${process.env.PWD}/public/noAuth.html`)
+          res.sendFile(`${process.env.PWD}/public/noAuth.html`)
       }
     })
   return indexRouter
