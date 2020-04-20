@@ -40,6 +40,6 @@
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^25.1.0",
     "supertest": "^4.0.2",
-    "vuepress": "^1.0.3"
+    "vuepress": "^1.4.0"
   }
 }
