@@ -17,6 +17,7 @@ docker run -d \
 -e SITENAME=default \
 -e SECRET=secretString \
 -e AUTH=none \
+-e REDIRECTURL=https://google.com \
 woodjme/unifi-hotspot
 ```
 
@@ -58,3 +59,4 @@ At a minimum the page you provide must send a `POST` request to `/authorise`. Yo
 |  `SITENAME` | `default`   | the sitename in your unifi controller    |
 |  `SECRET` | `myrandomstring`   | a secret for the express user session    |
 |  `AUTH` | `none|basic|custom`   | the auth page you want to display    |
+|  `REDIRECTURL` | `https://google.com`   | the page to redirect to after auth    |

@@ -1,6 +1,7 @@
 const express = require('express')
 const authoriseRouter = express.Router()
 const request = require('request-promise')
+const redirectUrl = process.env.REDIRECTURL || 'https://google.com'
 module.exports = function () {
   authoriseRouter.route('/')
     .post(function (req, res) {
@@ -32,7 +33,7 @@ module.exports = function () {
           return request(requestOptions)
         })
         .then(logoutResp => {
-          res.redirect('https://google.com')
+          res.redirect(redirectUrl)
         })
         .catch(err => {
           console.log(err)
