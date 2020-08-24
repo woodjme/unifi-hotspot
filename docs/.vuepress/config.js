@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Unifi Hotspot',
-  base: '/unifi-docs/',
+  base: '/',
   themeConfig: {
     displayAllHeaders: true,
     sidebarDepth: 5,
