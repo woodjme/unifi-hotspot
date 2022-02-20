@@ -24,22 +24,23 @@
   },
   "homepage": "https://github.com/woodjme/unifi-hotspot#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "express-session": "^1.17.1",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6"
+    "axios": "^0.25.0",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "http-cookie-agent": "^1.0.4",
+    "tough-cookie": "^4.0.0",
+    "vuepress": "^2.0.0-beta.35"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^23.20.0",
+    "eslint": "^8.9.0",
+    "eslint-config-standard": "^17.0.0-1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-standard": "^4.1.0",
-    "jest": "^25.5.4",
-    "supertest": "^4.0.2",
-    "vuepress": "^1.8.0"
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "jest": "^27.5.1",
+    "supertest": "^6.2.2"
   }
 }

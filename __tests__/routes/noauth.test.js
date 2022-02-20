@@ -15,17 +15,15 @@ describe('get /guest/s/process.env.SITENAME/ with no auth', () => {
     process.env = OLD_ENV
   })
 
-  it('should return a 200', async (done) => {
+  it('should return a 200', async () => {
     const res = await request(app)
       .get(`/guest/s/${process.env.SITENAME}/`)
     expect(res.statusCode).toEqual(200)
-    done()
   })
 
-  it('should return the noAuth page', async (done) => {
+  it('should return the noAuth page', async () => {
     const res = await request(app)
       .get(`/guest/s/${process.env.SITENAME}/`)
     expect(res.text).toContain('<title>Portal Page - No Auth</title>')
-    done()
   })
 })

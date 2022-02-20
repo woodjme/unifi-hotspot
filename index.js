@@ -1,6 +1,6 @@
 const server = require('./src/server')
 
-// launch ======================================================================
+// launch
 server.listen(4545, function (err) {
   if (!err) {
     console.log('running server on port 4545')

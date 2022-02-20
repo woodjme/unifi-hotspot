@@ -13,7 +13,7 @@
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
-        "ecmaVersion": 2018
+        "ecmaVersion": 13
     },
     "rules": {
         "jest/no-test-callback": 0
