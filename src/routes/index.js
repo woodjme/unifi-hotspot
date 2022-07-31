@@ -9,6 +9,7 @@ module.exports = function () {
       req.session.time = req.query.t
       req.session.url = req.query.url
       req.session.ssid = req.query.ssid
+      console.log(req.session)
 
       switch (process.env.AUTH) {
         case 'none':

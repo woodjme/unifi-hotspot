@@ -1,25 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Portal Page - No Auth</title>
     <style>
-        .centered {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+      .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     </style>
-</head>
-<body>
-    <form class="centered" name="login" action="/authorise" method="post">
-        <input id="submit" type="submit" name="submit" value="Connect to Wi-Fi" />
+  </head>
+  <body>
+    <form class="centered" id="login" name="login" onsubmit="return ajaxpost()">
+      <input id="submit" type="submit" name="submit" value="Connect to Wi-Fi" />
     </form>
     <script>
-        window.onload = function () {
-            document.getElementById('submit').click()
-        }
+      // window.onload = function () {
+       // document.getElementById("submit").click();
+     // };
+      function ajaxpost() {
+        // (A) GET FORM DATA
+        //var form = document.getElementById("myForm");
+        //var data = new FormData(form);
+
+        // (B) AJAX REQUEST
+        // (B1) POST DATA TO SERVER, RETURN RESPONSE AS TEXT
+        //fetch("authorise", { method:"POST", body:data })
+        fetch("/authorise", { method: "POST" })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.err) {
+              setTimeout(() => {
+                location.reload();
+              }, 5000);
+            } else {
+              console.log('done')
+              window.location.href = "/done.html";
+            }
+          })
+
+          // (B3) OPTIONAL - HANDLE FETCH ERROR
+          .catch((err) => {
+            console.error(err);
+          });
+
+        // (C) PREVENT FORM SUBMIT
+        return false;
+      }
     </script>
-</body>
+  </body>
 </html>

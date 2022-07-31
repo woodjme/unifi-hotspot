@@ -11,8 +11,8 @@ A full list of enviroment variables can be found [here](#environment-variables)
 ```bash
 docker run -d \
 -p 80:4545 \
--e USERNAME=ubnt \
--e PASSWORD=password \
+-e UNIFI_USER=ubnt \
+-e UNIFI_PASS=password \
 -e URI=https://unifi.jamiewood.io \
 -e SITENAME=default \
 -e SECRET=secretString \
@@ -53,8 +53,8 @@ At a minimum the page you provide must send a `POST` request to `/authorise`. Yo
 
 | Name       | Example     | Description     |
 | :------------- | :----------: | -----------: |
-|  `USERNAME` | `ubnt`   | your unifi controller username    |
-|  `PASSWORD` | `password`   | your unifi controller password    |
+|  `UNIFI_USER` | `ubnt`   | your unifi controller username    |
+|  `UNIFI_PASS` | `password`   | your unifi controller password    |
 |  `URI` | `https://unifi.jamiewood.io`   | your unifi controller uri    |
 |  `SITENAME` | `default`   | the sitename in your unifi controller    |
 |  `SECRET` | `myrandomstring`   | a secret for the express user session    |
