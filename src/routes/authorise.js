@@ -1,13 +1,12 @@
 const express = require('express')
 const authoriseRouter = express.Router()
 const axios = require('../helpers/axios')
-const redirectUrl = process.env.REDIRECTURL || 'http://captive.apple.com/hotspot-detect.html'
+const redirectUrl = process.env.REDIRECTURL || 'https://google.com'
 
 module.exports = function () {
   authoriseRouter.route('/')
     .post(async (req, res) => {
       console.log('start')
-      console.log(process.env)
       try {
         await axios.post('/api/login',
           JSON.stringify({
@@ -21,12 +20,9 @@ module.exports = function () {
             mac: req.session.macAddr
           }))
 
-        // console.log('auth')
-        // console.log(authResponse)
+        res.redirect(redirectUrl)
 
         await axios.post('/api/logout')
-
-        res.redirect(redirectUrl)
       } catch (err) {
         res.status(500).json({ err: { message: 'An Error has occoured. Please try again.' } })
         console.error(err)

@@ -13,42 +13,13 @@
     </style>
   </head>
   <body>
-    <form class="centered" id="login" name="login" onsubmit="return ajaxpost()">
-      <input id="submit" type="submit" name="submit" value="Connect to Wi-Fi" />
+    <form class="centered" id="login" action="/authorise" method="post">
+      <input style="font-size:4em;" id="submit" type="submit" name="submit" value="Connecting..." />
     </form>
     <script>
-      // window.onload = function () {
-       // document.getElementById("submit").click();
-     // };
-      function ajaxpost() {
-        // (A) GET FORM DATA
-        //var form = document.getElementById("myForm");
-        //var data = new FormData(form);
-
-        // (B) AJAX REQUEST
-        // (B1) POST DATA TO SERVER, RETURN RESPONSE AS TEXT
-        //fetch("authorise", { method:"POST", body:data })
-        fetch("/authorise", { method: "POST" })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.err) {
-              setTimeout(() => {
-                location.reload();
-              }, 5000);
-            } else {
-              console.log('done')
-              window.location.href = "/done.html";
-            }
-          })
-
-          // (B3) OPTIONAL - HANDLE FETCH ERROR
-          .catch((err) => {
-            console.error(err);
-          });
-
-        // (C) PREVENT FORM SUBMIT
-        return false;
-      }
+      window.onload = function () {
+        document.getElementById("submit").click();
+      };
     </script>
   </body>
 </html>
