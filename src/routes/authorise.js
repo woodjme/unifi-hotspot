@@ -80,6 +80,8 @@ const logAuth = async (formData) => {
   switch (process.env.LOG_AUTH_DRIVER) {
     case 'webhook':
       return await logAuthDrivers.webhook(formData)
+    case 'googlesheets':
+      return await logAuthDrivers.googleSheets(formData)
     default:
       return null
   }
