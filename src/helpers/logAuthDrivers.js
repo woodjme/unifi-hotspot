@@ -35,7 +35,7 @@ module.exports = {
 
         // Get sheet
         await doc.loadInfo()
-        const sheet = await doc.sheetsByIndex[0]
+        const sheet = doc.sheetsByIndex[0]
 
         // Add Row
         return await sheet.addRow(formData)
