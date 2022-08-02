@@ -1,7 +1,6 @@
 const axios = require('axios')
 const { GoogleSpreadsheet } = require('google-spreadsheet')
 
-
 module.exports = {
   webhook: async (formData) => {
     // Post formData to webhook

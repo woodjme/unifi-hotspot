@@ -8,6 +8,7 @@ The purpose of this repo is to provide a flexible, Node.js based external portal
 
 * The `USERNAME` environment variable has been renamed to `UNIFI_USER`
 * The `PASSWORD` environment variable has been renamed to `UNIFI_PASS`
+* Changed `basic` value for `AUTH_ENV` to `userInfo`
 
 ### Features and Improvements
 

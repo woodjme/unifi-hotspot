@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Portal Page - Simple</title>
+    <title>Portal Page - Basic Auth</title>
     <style>
       .centered {
         position: fixed;
@@ -14,6 +14,24 @@
   </head>
   <body>
     <form class="centered" name="login" action="/authorise" method="post">
+      <label style="font-size: 4em" for="name">Name:</label>
+      <input
+        style="font-size: 4em"
+        id="name"
+        type="text"
+        name="name"
+        required
+      />
+      <br />
+      <label style="font-size: 4em" for="email">Email:</label>
+      <input
+        style="font-size: 4em"
+        id="email"
+        type="email"
+        name="email"
+        required
+      />
+      <br />
       <input
         style="font-size: 4em"
         id="submit"

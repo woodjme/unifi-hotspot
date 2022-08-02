@@ -6,6 +6,7 @@
 
 * The `USERNAME` environment variable has been renamed to `UNIFI_USER`
 * The `PASSWORD` environment variable has been renamed to `UNIFI_PASS`
+* Changed `basic` value for `AUTH_ENV` to `userInfo`
 
 ### Features and Improvements
 
@@ -47,9 +48,9 @@ You then need to configure the unifi portal to look at this container. To do thi
 
 Automatically authorises users to the Wi-Fi without using authentication. Will display a "Connect to Wi-Fi" button which will be automatically clicked if JavaScript is available.
 
-### Basic
+### UserInfo
 
-Display a basic authentication page requiring the users name and email address to continue.
+Display a basic user information authentication page requiring the users name and email address to continue.
 
 ### Custom
 
@@ -138,7 +139,7 @@ To configure Google Sheets the following environment variables must be set
 |  `URI` | `https://unifi.jamiewood.io`   | your unifi controller uri    |
 |  `SITENAME` | `default`   | the sitename in your unifi controller    |
 |  `SECRET` | `myrandomstring`   | a secret for the express user session    |
-|  `AUTH` | `none|basic|custom`   | the auth page you want to display    |
+|  `AUTH` | `none|userInfo|simple|custom`   | the auth page you want to display    |
 |  `REDIRECTURL` | `https://google.com`   | the page to redirect to after auth    |
 |  `PORT` | `4545`   | the port to run the application on    |
 |  `LOG_AUTH_DRIVER` | `googlesheets`   | the driver to use to capture user data   |
