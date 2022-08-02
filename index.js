@@ -1,9 +1,9 @@
 const server = require('./src/server')
-
+const port = process.env.PORT || 4545
 // launch
-server.listen(process.env.PORT || 4545, function (err) {
+server.listen(port, function (err) {
   if (!err) {
-    console.log('running server on port 4545')
+    console.log(`running server on port ${port}`)
   } else {
     console.error(err)
   }

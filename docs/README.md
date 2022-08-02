@@ -13,6 +13,7 @@
 * Removed `request` and `request-promise` packages in favour of `axios`
 * Rewritten authorisation controller
 * 🎉 Store the contents of the hotspot form using `LOG_AUTH` drivers 🎉
+* Listen on port given in env
 
 ## Quick Start Guide
 
