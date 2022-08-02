@@ -9,7 +9,7 @@ module.exports = function () {
     .post(async (req, res) => {
       try {
         await unifiLogin()
-        if (process.env.LOG_AUTH === 'true' && process.env.LOG_AUTH_DRIVER) {
+        if (process.env.LOG_AUTH_DRIVER) {
           await logAuth(req.body)
         }
         await unifiDeviceAuthorisation(req)

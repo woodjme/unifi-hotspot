@@ -14,11 +14,8 @@ module.exports = function () {
         case 'none':
           res.sendFile(`${process.env.PWD}/public/noAuth.html`)
           break
-        case 'simple':
-          res.sendFile(`${process.env.PWD}/public/simple.html`)
-          break
-        case 'basicInfo':
-          res.sendFile(`${process.env.PWD}/public/basicInfo.html`)
+        case 'basic':
+          res.sendFile(`${process.env.PWD}/public/basic.html`)
           break
         case 'custom':
           res.sendFile(`${process.env.PWD}/public/custom.html`)

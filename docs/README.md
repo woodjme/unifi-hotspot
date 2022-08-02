@@ -1,5 +1,19 @@
 # Documentation
 
+## What's new in V2
+
+### BREAKING CHANGES
+
+* The `USERNAME` environment variable has been renamed to `UNIFI_USER`
+* The `PASSWORD` environment variable has been renamed to `UNIFI_PASS`
+
+### Features and Improvements
+
+* Bumped to NodeJS Version 18
+* Removed `request` and `request-promise` packages in favour of `axios`
+* Rewritten authorisation controller
+* 🎉 Store the contents of the hotspot form using `LOG_AUTH` drivers 🎉
+
 ## Quick Start Guide
 
 ### Docker
@@ -43,6 +57,70 @@ Allows you to bring your own authentication page by mounting `custom.html` insid
 
 At a minimum the page you provide must send a `POST` request to `/authorise`. You can look at either [noAuth.html](https://github.com/woodjme/unifi-hotspot/blob/master/public/noAuth.html) or [basic.html](https://github.com/woodjme/unifi-hotspot/blob/master/public/basic.html) as a reference.
 
+## Capture User Data & Logging Authorisations
+
+Data can be captured from users, such as email addresses from the form that is shown once a user connects to the hotspot. The `basicInfo.html` page contains an example of capturing a users name and email address.
+
+There are currently two different drivers available to store captured user data.
+
+* Webhooks
+* Google Sheets
+
+### Webhooks
+
+Webhooks allow you to forward on the body of the input form from the hotspot portal onto your own webservice to do what you see fit with. The form will be copied exactly as is.
+
+To configure webhook the follow environment variables must be set
+
+* `LOG_AUTH_DRIVER=webhook`
+* `LOG_AUTH_WEBHOOK_URL=https://yourWebService`
+
+The webhook driver will send a `POST` request to the provided webservice everytime a user connects to the Wi-Fi hotspot.
+
+### Google Sheets
+
+To configure Google Sheets the following environment variables must be set
+
+* `LOG_AUTH_DRIVER=googlesheets`
+* `LOG_AUTH_GOOGLE_SHEET_ID` - from the sheets URL after `/d/` and before `/edit`
+* `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL` - [See Google Sheets Authentication](#google-sheets-authentication)
+* `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` -[See Google Sheets Authentication](#google-sheets-authentication)
+
+#### Google Sheets Authentication
+
+##### Set up your google project & enable the sheets API
+
+1. Go to the [Google Developers Console](https://console.developers.google.com/)
+2. Select your project or create a new one (and then select it)
+3. Enable the Sheets API for your project
+
+* In the sidebar on the left, select **APIs & Services > Library**
+* Search for "sheets"
+* Click on "Google Sheets API"
+* click the blue "Enable" button
+
+##### Create Service Account
+
+1. Follow steps above to set up project and enable sheets API
+2. Create a service account for your project
+
+* In the sidebar on the left, select **APIs & Services > Credentials**
+* Click blue "+ CREATE CREDENTIALS" and select "Service account" option
+* Enter name, description, click "CREATE"
+* You can skip permissions, click "CONTINUE"
+* Click "+ CREATE KEY" button
+* Select the "JSON" key type option
+* Click "Create" button
+* your JSON key file is generated and downloaded to your machine (**it is the only copy!**)
+* click "DONE"
+* note your service account's email address (also available in the JSON key file)
+
+#### Google Sheet Setup
+
+1. Create a new Google Sheet and invite the Service Account with read/write permissions using the service account's email address
+2. Add headings for the data you want to see in the sheet such as `name`, `email` etc. These headings must match the `name` attribute of the inputs in the html form that the users are submitting when they conncect to the hotspot.
+3. note the Google Sheets ID - from the sheets URL after `/d/` and before `/edit`
+
 ## Bind Mounts
 
 ### Custom Auth Page
@@ -60,3 +138,5 @@ At a minimum the page you provide must send a `POST` request to `/authorise`. Yo
 |  `SECRET` | `myrandomstring`   | a secret for the express user session    |
 |  `AUTH` | `none|basic|custom`   | the auth page you want to display    |
 |  `REDIRECTURL` | `https://google.com`   | the page to redirect to after auth    |
+|  `LOG_AUTH_DRIVER` | `googlesheets`   | the driver to use to capture user data   |
+|  `LOG_AUTH_$DRIVER_$OPT` | `n/a`   | options set for each log_auth drivers   |
