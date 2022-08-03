@@ -139,7 +139,7 @@ To configure Google Sheets the following environment variables must be set
 |  `URI` | `https://unifi.jamiewood.io`   | your unifi controller uri    |
 |  `SITENAME` | `default`   | the sitename in your unifi controller    |
 |  `SECRET` | `myrandomstring`   | a secret for the express user session    |
-|  `AUTH` | `none|userInfo|simple|custom`   | the auth page you want to display    |
+|  `AUTH` | `none OR userInfo OR simple OR custom`   | the auth page you want to display    |
 |  `REDIRECTURL` | `https://google.com`   | the page to redirect to after auth    |
 |  `PORT` | `4545`   | the port to run the application on    |
 |  `LOG_AUTH_DRIVER` | `googlesheets`   | the driver to use to capture user data   |
