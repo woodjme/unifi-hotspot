@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Portal Page - Simple</title>
+    <style>
+      .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <form class="centered" name="login" action="/authorise" method="post">
+      <input
+        style="font-size: 4em"
+        id="submit"
+        type="submit"
+        value="Connect to Wi-Fi"
+      />
+    </form>
+    <script>
+      //Change button text on press
+      document.getElementById("submit").onclick = function () {
+        this.value = "Connecting...";
+      };
+    </script>
+  </body>
+</html>

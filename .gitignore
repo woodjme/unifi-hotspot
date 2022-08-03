@@ -41,3 +41,6 @@ settings.json
 .DS_Store
 
 docs/.vuepress/dist
+docs/.vuepress/.cache
+docs/.vuepress/.temp
+

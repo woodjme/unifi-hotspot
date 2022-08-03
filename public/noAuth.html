@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Portal Page - No Auth</title>
     <style>
-        .centered {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+      .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     </style>
-</head>
-<body>
-    <form class="centered" name="login" action="/authorise" method="post">
-        <input id="submit" type="submit" name="submit" value="Connect to Wi-Fi" />
+  </head>
+  <body>
+    <form class="centered" id="login" action="/authorise" method="post">
+      <input
+        style="font-size: 4em"
+        id="submit"
+        type="submit"
+        value="Connecting..."
+      />
     </form>
     <script>
-        window.onload = function () {
-            document.getElementById('submit').click()
-        }
+      window.onload = function () {
+        setTimeout(function () {
+          document.getElementById("submit").click();
+          //Change button text on press
+          document.getElementById("submit").onclick = function () {
+            this.value = "Connecting...";
+          };
+        }, 1000);
+      };
     </script>
-</body>
+  </body>
 </html>

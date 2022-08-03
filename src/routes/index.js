@@ -14,14 +14,17 @@ module.exports = function () {
         case 'none':
           res.sendFile(`${process.env.PWD}/public/noAuth.html`)
           break
-        case 'basic':
-          res.sendFile(`${process.env.PWD}/public/basic.html`)
+        case 'simple':
+          res.sendFile(`${process.env.PWD}/public/simple.html`)
+          break
+        case 'userInfo':
+          res.sendFile(`${process.env.PWD}/public/userInfo.html`)
           break
         case 'custom':
           res.sendFile(`${process.env.PWD}/public/custom.html`)
           break
         default:
-          res.sendFile(`${process.env.PWD}/public/noAuth.html`)
+          res.sendFile(`${process.env.PWD}/public/simple.html`)
       }
     })
   return indexRouter
