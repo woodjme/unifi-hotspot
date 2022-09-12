@@ -3,6 +3,7 @@ const server = express()
 const bodyParser = require('body-parser')
 
 // middleware
+server.use(express.static("public"));
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(require('express-session')({
   secret: process.env.SECRET || 'secret',
