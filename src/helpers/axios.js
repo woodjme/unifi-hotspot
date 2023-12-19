@@ -5,7 +5,7 @@ const tough = require('tough-cookie')
 const jar = new tough.CookieJar()
 
 const instance = axios.create({
-  baseURL: `${process.env.URI}`,
+  baseURL: `${process.env.UNIFI_URI}` || `${process.env.URI}`,
   httpAgent: new HttpCookieAgent({
     jar
   }),
