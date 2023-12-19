@@ -1,6 +1,6 @@
 # unifi-hotspot
 
-The purpose of this repo is to provide a flexible, Node.js based external portal server for authorising Wi-Fi guests on Unifi products.
+The purpose of this repo is to provide a flexible, Node.js based external portal server for authorising Wi-Fi guests on Unifi products. Out of the box is currently support storing user information in Google Sheets or posting it via a webhook.
 
 ## What's new in V2
 
