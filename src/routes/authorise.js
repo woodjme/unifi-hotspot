@@ -4,6 +4,8 @@ const axios = require('../helpers/axios')
 const redirectUrl = process.env.REDIRECTURL || 'https://google.com'
 const logAuthDrivers = require('../helpers/logAuthDrivers')
 
+const unifiSiteName = process.env.UNIFI_SITENAME || process.env.SITENAME
+
 module.exports = function () {
   authoriseRouter.route('/')
     .post(async (req, res) => {
@@ -45,7 +47,7 @@ const unifiLogin = async () => {
 // Unifi Device Authorisation
 const unifiDeviceAuthorisation = async (req) => {
   try {
-    const deviceAuthorisation = await axios.post(`/api/s/${process.env.SITENAME}/cmd/stamgr`,
+    const deviceAuthorisation = await axios.post(`/api/s/${unifiSiteName}/cmd/stamgr`,
       JSON.stringify({
         cmd: 'authorize-guest',
         mac: req.session.macAddr

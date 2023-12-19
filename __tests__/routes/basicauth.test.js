@@ -1,7 +1,7 @@
 const request = require('supertest')
 const app = require('../../src/server')
 
-describe('get /guest/s/process.env.SITENAME/ with basic auth', () => {
+describe('get /guest/s/process.env.UNIFI_SITENAME/ with basic auth', () => {
   const OLD_ENV = process.env
 
   beforeEach(() => {
@@ -17,13 +17,13 @@ describe('get /guest/s/process.env.SITENAME/ with basic auth', () => {
 
   it('should return a 200', async () => {
     const res = await request(app)
-      .get(`/guest/s/${process.env.SITENAME}/`)
+      .get(`/guest/s/${process.env.UNIFI_SITENAME}/`)
     expect(res.statusCode).toEqual(200)
   })
 
   it('should return the noAuth page', async () => {
     const res = await request(app)
-      .get(`/guest/s/${process.env.SITENAME}/`)
+      .get(`/guest/s/${process.env.UNIFI_SITENAME}/`)
     expect(res.text).toContain('<title>Portal Page - Basic Auth</title>')
   })
 })

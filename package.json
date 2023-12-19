@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env SITENAME=default SECRET=secretString URI=https://unifi.jamiewood.io jest --detectOpenHandles",
-    "test:watch": "cross-env SITENAME=default SECRET=secretString URI=https://unifi.jamiewood.io jest --watchAll --detectOpenHandles",
+    "test": "cross-env UNIFI_SITENAME=default SECRET=secretString UNIFI_URI=https://unifi.jamiewood.io jest --detectOpenHandles",
+    "test:watch": "cross-env UNIFI_SITENAME=default SECRET=secretString UNIFI_URI=https://unifi.jamiewood.io jest --watchAll --detectOpenHandles",
     "start": "node index.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
