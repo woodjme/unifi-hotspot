@@ -49,7 +49,9 @@ module.exports = {
   },
   mailchimp: async (formData) => {
     // Add email to Mailchimp list
-    if (process.env.MAILCHIMP_API_KEY && process.env.MAILCHIMP_SERVER_PREFIX && process.env.MAILCHIMP_LIST_ID) {
+    if (process.env.MAILCHIMP_API_KEY &&
+      process.env.MAILCHIMP_SERVER_PREFIX &&
+      process.env.MAILCHIMP_LIST_ID) {
       try {
         mailchimp.setConfig({
           apiKey: process.env.MAILCHIMP_API_KEY,
