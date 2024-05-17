@@ -68,6 +68,7 @@ There are currently two different drivers available to store captured user data.
 
 * Webhooks
 * Google Sheets
+* Mailchimp
 
 ### Webhooks
 
@@ -123,6 +124,16 @@ To configure Google Sheets the following environment variables must be set
 1. Create a new Google Sheet and invite the Service Account with read/write permissions using the service account's email address
 2. Add headings for the data you want to see in the sheet such as `name`, `email` etc. These headings must match the `name` attribute of the inputs in the html form that the users are submitting when they conncect to the hotspot.
 3. note the Google Sheets ID - from the sheets URL after `/d/` and before `/edit`
+
+#### Mailchimp
+
+Allows you to automatically add guests to a Mailchimp list.
+
+Settings are as follows:
+
+* `MAILCHIMP_API_KEY`: Your Mailchimp API key.
+* `MAILCHIMP_SERVER_PREFIX`: The server prefix for your Mailchimp account (e.g., us1, us2, etc.).
+* `MAILCHIMP_LIST_ID`: The ID of the Mailchimp list to which you want to add subscribers.
 
 ## Bind Mounts
 

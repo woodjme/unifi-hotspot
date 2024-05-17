@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/woodjme/unifi-hotspot#readme",
   "dependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "axios": "^1.6.0",
     "body-parser": "^1.20.0",
     "express": "^4.17.2",

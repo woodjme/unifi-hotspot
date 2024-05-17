@@ -1,5 +1,6 @@
 const axios = require('axios')
 const { GoogleSpreadsheet } = require('google-spreadsheet')
+const mailchimp = require('@mailchimp/mailchimp_marketing');
 
 module.exports = {
   webhook: async (formData) => {
@@ -44,6 +45,29 @@ module.exports = {
       }
     } else {
       console.error('Skipping Google Sheets - required env vars not set')
+    }
+  },
+  mailchimp: async (formData) => {
+    // Add email to Mailchimp list
+    if (process.env.MAILCHIMP_API_KEY && process.env.MAILCHIMP_SERVER_PREFIX && process.env.MAILCHIMP_LIST_ID) {
+      try {
+        mailchimp.setConfig({
+          apiKey: process.env.MAILCHIMP_API_KEY,
+          server: process.env.MAILCHIMP_SERVER_PREFIX
+        });
+
+        const response = await mailchimp.lists.addListMember(process.env.MAILCHIMP_LIST_ID, {
+          email_address: formData.email,
+          status: 'subscribed'
+        });
+
+        return response;
+      } catch (err) {
+        console.error(err);
+        console.error('Mailchimp Failed');
+      }
+    } else {
+      console.error('Skipping Mailchimp - required env vars not set');
     }
   }
 }
