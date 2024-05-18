@@ -1,5 +1,6 @@
 const axios = require('axios')
 const { GoogleSpreadsheet } = require('google-spreadsheet')
+const { auth } = require('google-auth-library')
 
 module.exports = {
   webhook: async (formData) => {
@@ -18,26 +19,37 @@ module.exports = {
     }
   },
   googleSheets: async (formData) => {
-    // Post formData to Google Sheets
-    if (process.env.LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL &&
+    if (
+      process.env.LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL &&
       process.env.LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY &&
-      process.env.LOG_AUTH_GOOGLE_SHEET_ID) {
+      process.env.LOG_AUTH_GOOGLE_SHEET_ID
+    ) {
       try {
         // Setup Document
         const doc = new GoogleSpreadsheet(process.env.LOG_AUTH_GOOGLE_SHEET_ID)
 
         // Authenticate
-        await doc.useServiceAccountAuth({
-          client_email: process.env.LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL,
-          private_key: process.env.LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY
+        const authClient = await auth.getClient({
+          credentials: {
+            client_email: process.env.LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL,
+            private_key: process.env.LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY,
+          },
+          scopes: ['https://www.googleapis.com/auth/spreadsheets']
         })
 
-        // Get sheet
+        // Apply the authentication client to the document
+        await doc.useAuth(authClient)
+
+        // Load the document properties and sheets
         await doc.loadInfo()
+
+        // Get the first sheet in the document
         const sheet = doc.sheetsByIndex[0]
 
-        // Add Row
-        return await sheet.addRow(formData)
+        // Add a new row with formData
+        const newRow = await sheet.addRow(formData)
+
+        console.log('Row added successfully:', newRow)
       } catch (err) {
         console.error(err)
         console.error('Google Sheets Failed')
