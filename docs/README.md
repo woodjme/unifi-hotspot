@@ -29,7 +29,7 @@ docker run -d \
 -p 80:4545 \
 -e UNIFI_USER=ubnt \
 -e UNIFI_PASS=password \
--e UNIFI_URI=https://unifi.jamiewood.io \
+-e UNIFI_URL=https://unifi.jamiewood.io \
 -e UNIFI_SITENAME=default \
 -e SECRET=secretString \
 -e AUTH=none \
@@ -136,7 +136,7 @@ To configure Google Sheets the following environment variables must be set
 | :------------- | :----------: | -----------: |
 |  `UNIFI_USER` | `ubnt`   | your unifi controller username    |
 |  `UNIFI_PASS` | `password`   | your unifi controller password    |
-|  `UNIFI_URI` | `https://unifi.jamiewood.io`   | your unifi controller uri    |
+|  `UNIFI_URL` | `https://unifi.jamiewood.io`   | your unifi controller uri    |
 |  `UNIFI_SITENAME` | `default`   | the sitename in your unifi controller    |
 |  `SECRET` | `myrandomstring`   | a secret for the express user session    |
 |  `AUTH` | `none OR userInfo OR simple OR custom`   | the auth page you want to display    |
