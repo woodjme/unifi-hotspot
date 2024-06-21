@@ -1,5 +1,4 @@
-import pino from "pino";
-
+import pino from 'pino';
 let logger: pino.BaseLogger;
 
 if (process.env.NODE_ENV === 'development') {
@@ -11,8 +10,14 @@ if (process.env.NODE_ENV === 'development') {
   });
 } else {
   logger = pino({
-    level: process.env.LOG_LEVEL || 'info'
+    level: process.env.LOG_LEVEL || 'info',
   });
 }
 
-export { logger };
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const expressPino = require('pino-http')({
+  logger: logger,
+  useLevel: 'trace',
+});
+
+export { logger, expressPino };

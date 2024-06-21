@@ -9,7 +9,11 @@ declare module 'logger' {
 }
 
 declare module 'config' {
-  export const requiredEnvVars: readonly ['REDIRECTURL', 'UNIFI_DEVICE_TYPE', 'LOG_AUTH_DRIVER'];
+  export const requiredEnvVars: readonly [
+    'REDIRECTURL',
+    'UNIFI_DEVICE_TYPE',
+    'LOG_AUTH_DRIVER',
+  ];
 
   export interface Config {
     redirectUrl: string;
@@ -24,7 +28,6 @@ declare module 'config' {
   export const config: Config;
 
   export function validateConfig(): void;
-
 }
 
 import 'express-session';

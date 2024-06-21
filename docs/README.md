@@ -4,17 +4,17 @@
 
 ### BREAKING CHANGES
 
-* The `USERNAME` environment variable has been renamed to `UNIFI_USER`
-* The `PASSWORD` environment variable has been renamed to `UNIFI_PASS`
-* Changed `basic` value for `AUTH_ENV` to `userInfo`
+- The `USERNAME` environment variable has been renamed to `UNIFI_USER`
+- The `PASSWORD` environment variable has been renamed to `UNIFI_PASS`
+- Changed `basic` value for `AUTH_ENV` to `userInfo`
 
 ### Features and Improvements
 
-* Bumped to NodeJS Version 18
-* Removed `request` and `request-promise` packages in favour of `axios`
-* Rewritten authorisation controller
-* 🎉 Store the contents of the hotspot form using `LOG_AUTH` drivers 🎉
-* Listen on port given in env
+- Bumped to NodeJS Version 18
+- Removed `request` and `request-promise` packages in favour of `axios`
+- Rewritten authorisation controller
+- 🎉 Store the contents of the hotspot form using `LOG_AUTH` drivers 🎉
+- Listen on port given in env
 
 ## Quick Start Guide
 
@@ -66,8 +66,8 @@ Data can be captured from users, such as email addresses from the form that is s
 
 There are currently two different drivers available to store captured user data.
 
-* Webhooks
-* Google Sheets
+- Webhooks
+- Google Sheets
 
 ### Webhooks
 
@@ -75,8 +75,8 @@ Webhooks allow you to forward on the body of the input form from the hotspot por
 
 To configure webhook the follow environment variables must be set
 
-* `LOG_AUTH_DRIVER=webhook`
-* `LOG_AUTH_WEBHOOK_URL=https://yourWebService`
+- `LOG_AUTH_DRIVER=webhook`
+- `LOG_AUTH_WEBHOOK_URL=https://yourWebService`
 
 The webhook driver will send a `POST` request to the provided webservice everytime a user connects to the Wi-Fi hotspot.
 
@@ -84,10 +84,10 @@ The webhook driver will send a `POST` request to the provided webservice everyti
 
 To configure Google Sheets the following environment variables must be set
 
-* `LOG_AUTH_DRIVER=googlesheets`
-* `LOG_AUTH_GOOGLE_SHEET_ID` - from the sheets URL after `/d/` and before `/edit`
-* `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL` - [See Google Sheets Authentication](#google-sheets-authentication)
-* `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` -[See Google Sheets Authentication](#google-sheets-authentication)
+- `LOG_AUTH_DRIVER=googlesheets`
+- `LOG_AUTH_GOOGLE_SHEET_ID` - from the sheets URL after `/d/` and before `/edit`
+- `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL` - [See Google Sheets Authentication](#google-sheets-authentication)
+- `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` -[See Google Sheets Authentication](#google-sheets-authentication)
 
 #### Google Sheets Authentication
 
@@ -97,26 +97,26 @@ To configure Google Sheets the following environment variables must be set
 2. Select your project or create a new one (and then select it)
 3. Enable the Sheets API for your project
 
-* In the sidebar on the left, select **APIs & Services > Library**
-* Search for "sheets"
-* Click on "Google Sheets API"
-* click the blue "Enable" button
+- In the sidebar on the left, select **APIs & Services > Library**
+- Search for "sheets"
+- Click on "Google Sheets API"
+- click the blue "Enable" button
 
 ##### Create Service Account
 
 1. Follow steps above to set up project and enable sheets API
 2. Create a service account for your project
 
-* In the sidebar on the left, select **APIs & Services > Credentials**
-* Click blue "+ CREATE CREDENTIALS" and select "Service account" option
-* Enter name, description, click "CREATE"
-* You can skip permissions, click "CONTINUE"
-* Click "+ CREATE KEY" button
-* Select the "JSON" key type option
-* Click "Create" button
-* your JSON key file is generated and downloaded to your machine (**it is the only copy!**)
-* click "DONE"
-* note your service account's email address (also available in the JSON key file)
+- In the sidebar on the left, select **APIs & Services > Credentials**
+- Click blue "+ CREATE CREDENTIALS" and select "Service account" option
+- Enter name, description, click "CREATE"
+- You can skip permissions, click "CONTINUE"
+- Click "+ CREATE KEY" button
+- Select the "JSON" key type option
+- Click "Create" button
+- your JSON key file is generated and downloaded to your machine (**it is the only copy!**)
+- click "DONE"
+- note your service account's email address (also available in the JSON key file)
 
 #### Google Sheet Setup
 
@@ -132,15 +132,15 @@ To configure Google Sheets the following environment variables must be set
 
 ## Environment Variables
 
-| Name       | Example     | Description     |
-| :------------- | :----------: | -----------: |
-|  `UNIFI_USER` | `ubnt`   | your unifi controller username    |
-|  `UNIFI_PASS` | `password`   | your unifi controller password    |
-|  `UNIFI_URL` | `https://unifi.jamiewood.io`   | your unifi controller uri    |
-|  `UNIFI_SITENAME` | `default`   | the sitename in your unifi controller    |
-|  `SECRET` | `myrandomstring`   | a secret for the express user session    |
-|  `AUTH` | `none OR userInfo OR simple OR custom`   | the auth page you want to display    |
-|  `REDIRECTURL` | `https://google.com`   | the page to redirect to after auth    |
-|  `PORT` | `4545`   | the port to run the application on    |
-|  `LOG_AUTH_DRIVER` | `googlesheets`   | the driver to use to capture user data   |
-|  `LOG_AUTH_$DRIVER_$OPT` | `n/a`   | options set for each log_auth drivers   |
+| Name                    |                Example                 |                            Description |
+| :---------------------- | :------------------------------------: | -------------------------------------: |
+| `UNIFI_USER`            |                 `ubnt`                 |         your unifi controller username |
+| `UNIFI_PASS`            |               `password`               |         your unifi controller password |
+| `UNIFI_URL`             |      `https://unifi.jamiewood.io`      |              your unifi controller uri |
+| `UNIFI_SITENAME`        |               `default`                |  the sitename in your unifi controller |
+| `SECRET`                |            `myrandomstring`            |  a secret for the express user session |
+| `AUTH`                  | `none OR userInfo OR simple OR custom` |      the auth page you want to display |
+| `REDIRECTURL`           |          `https://google.com`          |     the page to redirect to after auth |
+| `PORT`                  |                 `4545`                 |     the port to run the application on |
+| `LOG_AUTH_DRIVER`       |             `googlesheets`             | the driver to use to capture user data |
+| `LOG_AUTH_$DRIVER_$OPT` |                 `n/a`                  |  options set for each log_auth drivers |
