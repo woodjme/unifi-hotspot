@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { logger } from './logger';
+import { GoogleSpreadsheet } from 'google-spreadsheet';
+import { JWT as GoogleAuthJWT, CredentialBody } from 'google-auth-library';
 
 interface FormData {
   [key: string]: any;
@@ -24,32 +25,47 @@ export const webhook = async (formData: FormData): Promise<void> => {
 
 export const googleSheets = async (formData: FormData): Promise<void> => {
   // Post formData to Google Sheets
-  if (
-    process.env.LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL &&
-    process.env.LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY &&
-    process.env.LOG_AUTH_GOOGLE_SHEET_ID
-  ) {
-    try {
-      // Setup Document
-      const doc = new GoogleSpreadsheet(process.env.LOG_AUTH_GOOGLE_SHEET_ID);
-
-      // Authenticate
-      await doc.useServiceAccountAuth({
-        client_email: process.env.LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL,
-        private_key: process.env.LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY,
-      });
-
-      // Get sheet
-      await doc.loadInfo();
-      const sheet = doc.sheetsByIndex[0];
-
-      // Add Row
-      await sheet.addRow(formData);
-    } catch (err) {
-      logger.error(err);
-      logger.error('Google Sheets Failed');
+  try {
+    // Decode the credentials from base64
+    if (!process.env.LOG_AUTH_GOOGLE_CREDENTIALS) {
+      throw new Error('LOG_AUTH_GOOGLE_CREDENTIALS is not set');
     }
-  } else {
-    logger.error('Skipping Google Sheets - required env vars not set');
+    // Ensure LOG_AUTH_GOOGLE_SHEET_ID is defined and not empty
+    const sheetId = process.env.LOG_AUTH_GOOGLE_SHEET_ID;
+    if (!sheetId) {
+      throw new Error('LOG_AUTH_GOOGLE_SHEET_ID is not set');
+    }
+    const credentialsBase64String = process.env.LOG_AUTH_GOOGLE_CREDENTIALS;
+    if (!credentialsBase64String) {
+      throw new Error('LOG_AUTH_GOOGLE_CREDENTIALS is not set');
+    }
+
+    const credential: CredentialBody = JSON.parse(
+      Buffer.from(credentialsBase64String, 'base64').toString('utf-8'),
+    );
+
+    // Authenticate
+    const serviceAccountAuth = new GoogleAuthJWT({
+      email: credential.client_email,
+      key: credential.private_key,
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
+
+    // Setup Document
+    const doc = new GoogleSpreadsheet(sheetId, serviceAccountAuth);
+
+    // Load the document properties and sheets
+    await doc.loadInfo();
+
+    // Get the first sheet in the document
+    const sheet = doc.sheetsByIndex[0];
+
+    // Add a new row with formData
+    const newRow = await sheet.addRow(formData);
+
+    logger.info(`Row added successfully: ${newRow}`);
+  } catch (err) {
+    logger.error(err);
+    logger.error('Google Sheets Failed');
   }
 };

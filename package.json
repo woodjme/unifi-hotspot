@@ -1,7 +1,7 @@
 {
   "name": "unifi-hotspot",
   "version": "3.0.0-beta",
-"description": "A Unifi Captive Portal",
+  "description": "A Unifi Captive Portal",
   "main": "dist/index.js",
   "scripts": {
     "test": "cross-env UNIFI_SITENAME=default SECRET=secretString UNIFI_URL=https://unifi.jamiewood.io jest --detectOpenHandles",
@@ -35,7 +35,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
-    "google-spreadsheet": "^3.3.0",
+    "google-auth-library": "^9.11.0",
+    "google-spreadsheet": "^4.1.2",
     "http-cookie-agent": "^1.0.4",
     "pino": "^9.2.0",
     "pino-http": "^10.1.0",
@@ -48,7 +49,6 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21",
     "@types/express-session": "^1.18.0",
-    "@types/google-spreadsheet": "^3.3.2",
     "@types/node": "^20.14.8",
     "@types/pino": "^7.0.5",
     "@types/tough-cookie": "^4.0.5",
@@ -69,8 +69,8 @@
     "husky": "^9.0.11",
     "jest": "^27.5.1",
     "lint-staged": "^15.2.7",
-    "prettier": "^3.3.2",
     "pino-pretty": "^11.2.1",
+    "prettier": "^3.3.2",
     "supertest": "^6.2.2",
     "typescript": "^5.5.2",
     "vuepress": "^2.0.0-rc.13"
