@@ -1,8 +1,8 @@
 {
   "name": "unifi-hotspot",
   "version": "3.0.0-beta",
-  "description": "",
-  "main": "index.js",
+"description": "A Unifi Captive Portal",
+  "main": "dist/index.js",
   "scripts": {
     "test": "cross-env UNIFI_SITENAME=default SECRET=secretString UNIFI_URL=https://unifi.jamiewood.io jest --detectOpenHandles",
     "test:watch": "cross-env UNIFI_SITENAME=default SECRET=secretString UNIFI_URL=https://unifi.jamiewood.io jest --watchAll --detectOpenHandles",
@@ -12,16 +12,18 @@
     "docs:build": "vuepress build docs",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "clean": "rm -rf dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/woodjme/unifi-hotspot.git"
   },
   "keywords": [
-    "Unifi"
+    "Unifi",
+    "Captive Portal"
   ],
-  "author": "Jamie Wood",
+  "author": "Jamie Wood <me@jamiewood.io> (https://jamiewood.io)",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/woodjme/unifi-hotspot/issues"
@@ -72,5 +74,8 @@
     "supertest": "^6.2.2",
     "typescript": "^5.5.2",
     "vuepress": "^2.0.0-rc.13"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
