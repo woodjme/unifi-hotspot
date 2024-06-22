@@ -33,9 +33,11 @@ authoriseRouter.route('/').post(async (req: Request, res: Response) => {
     logger.debug('Starting Unifi Logout Attempt');
     await selectedModules.logout();
   } catch (err) {
-    res
-      .status(500)
-      .json({ err: { message: 'An Error has occurred. Please try again.' } });
+    res.status(500).json({
+      err: {
+        message: 'An Error has occurred. Please try again.',
+      },
+    });
   }
 });
 

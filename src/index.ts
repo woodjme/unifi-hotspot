@@ -1,6 +1,8 @@
 // Import config from .env - Don't override existing env vars - this needs to happen first
 import * as dotenv from 'dotenv';
-dotenv.config({ override: false });
+dotenv.config({
+  override: false,
+});
 
 // Setup config
 import {

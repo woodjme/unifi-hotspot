@@ -12,7 +12,11 @@ const unifiSiteIdentifier = config.unifiSiteIdentifier;
 // middleware
 app.use(expressPino);
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  }),
+);
 app.use(
   session({
     secret: config.sessionSecret,

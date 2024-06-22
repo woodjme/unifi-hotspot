@@ -65,9 +65,7 @@ function validateConfig(): void {
     !Object.values(UnifiControllerType).includes(config.unifiControllerType)
   ) {
     logger.error(
-      `Invalid value for UNIFI_CONTROLLER_TYPE. Expected one of: ${Object.values(
-        UnifiControllerType,
-      ).join(', ')}`,
+      `Invalid value for UNIFI_CONTROLLER_TYPE. Expected one of: ${Object.values(UnifiControllerType).join(', ')}`,
     );
     process.exit(1);
   }
@@ -75,9 +73,7 @@ function validateConfig(): void {
   // Validate LogAuthDriver
   if (!Object.values(LogAuthDriver).includes(config.logAuthDriver)) {
     logger.error(
-      `Invalid value for LOG_AUTH_DRIVERS. Expected one of: ${Object.values(
-        LogAuthDriver,
-      ).join(', ')}`,
+      `Invalid value for LOG_AUTH_DRIVERS. Expected one of: ${Object.values(LogAuthDriver).join(', ')}`,
     );
     process.exit(1);
   }

@@ -6,7 +6,9 @@ describe('get /guest/s/process.env.SITENAME/ with no auth', () => {
 
   beforeEach(() => {
     jest.resetModules();
-    process.env = { ...OLD_ENV };
+    process.env = {
+      ...OLD_ENV,
+    };
     delete process.env.NODE_ENV;
     process.env.AUTH = 'none';
   });
