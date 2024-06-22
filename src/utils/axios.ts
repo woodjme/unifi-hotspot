@@ -2,11 +2,12 @@ import axios from 'axios';
 import { HttpCookieAgent, HttpsCookieAgent } from 'http-cookie-agent';
 import { CookieJar } from 'tough-cookie';
 import { logger } from './logger';
+import { config } from './config';
 
 const jar = new CookieJar();
 
 const instance = axios.create({
-  baseURL: process.env.UNIFI_URL || process.env.URI,
+  baseURL: config.unifiControllerUrl,
   httpAgent: new HttpCookieAgent({
     jar,
   }),

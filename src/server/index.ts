@@ -7,7 +7,7 @@ import { config } from '../utils/config';
 import { expressPino } from '../utils/logger';
 
 const app = express();
-const unifiSiteName = config.unifiSiteName;
+const unifiSiteIdentifier = config.unifiSiteIdentifier;
 
 // middleware
 app.use(expressPino);
@@ -15,7 +15,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
-    secret: config.secret,
+    secret: config.sessionSecret,
     resave: true,
     saveUninitialized: true,
   }),
@@ -23,9 +23,9 @@ app.use(
 
 // routes
 app.get('/', (req: Request, res: Response) => {
-  res.redirect(301, `/guest/s/${unifiSiteName}/`);
+  res.redirect(301, `/guest/s/${unifiSiteIdentifier}/`);
 });
-app.use(`/guest/s/${unifiSiteName}/`, indexRouter);
+app.use(`/guest/s/${unifiSiteIdentifier}/`, indexRouter);
 app.use('/authorise', authoriseRouter);
 
 export default app;

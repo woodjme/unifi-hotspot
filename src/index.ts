@@ -3,9 +3,14 @@ import * as dotenv from 'dotenv';
 dotenv.config({ override: false });
 
 // Setup config
-import { config, validateConfig } from './utils/config';
+import {
+  config,
+  validateConfig,
+  checkForRequiredEnvVars,
+} from './utils/config';
 import { logger } from './utils/logger';
 
+checkForRequiredEnvVars();
 validateConfig();
 logger.info(config);
 

@@ -1,19 +1,19 @@
 import express, { Request, Response } from 'express';
 import { logger } from '../utils/logger';
 import { webhook, googleSheets } from '../utils/logAuthDrivers';
-import { config, DeviceType } from '../utils/config';
+import { config, UnifiControllerType } from '../utils/config';
 
 import { UnifiApiService } from '../interfaces/UnifiApiService';
-import { legacyUnifiModule, modernUnifiModule } from '../unifi/index';
+import { standaloneUnifiModule, integratedUnifiModule } from '../unifi/index';
 
 const authoriseRouter = express.Router();
 
-const unifiAuthServices: Record<DeviceType, UnifiApiService> = {
-  legacy: legacyUnifiModule,
-  unifios: modernUnifiModule,
+const unifiAuthServices: Record<UnifiControllerType, UnifiApiService> = {
+  standalone: standaloneUnifiModule,
+  integrated: integratedUnifiModule,
 };
 
-const selectedModules = unifiAuthServices[config.deviceType];
+const selectedModules = unifiAuthServices[config.unifiControllerType];
 
 authoriseRouter.route('/').post(async (req: Request, res: Response) => {
   try {
@@ -27,7 +27,7 @@ authoriseRouter.route('/').post(async (req: Request, res: Response) => {
     logger.debug('Starting Unifi Device Authorisation Attempt');
     await selectedModules.authorise(req);
 
-    logger.debug(`Redirecting to  ${config.redirectUrl}`)
+    logger.debug(`Redirecting to  ${config.redirectUrl}`);
     res.redirect(config.redirectUrl);
 
     logger.debug('Starting Unifi Logout Attempt');

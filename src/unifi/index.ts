@@ -1,11 +1,11 @@
-// legacyUnifiModule.ts
+// standaloneUnifiModule.ts
 import { AxiosResponse } from 'axios';
 import { UnifiApiService } from '../interfaces/UnifiApiService';
 import { logger } from '../utils/logger';
 import unifiApiClient from '../utils/axios';
 import { config } from '../utils/config';
 
-export const legacyUnifiModule: UnifiApiService = {
+export const standaloneUnifiModule: UnifiApiService = {
   login: async (): Promise<AxiosResponse> => {
     const loginResponse = await unifiApiClient.post('/api/login', {
       username: config.unifiUsername,
@@ -21,7 +21,7 @@ export const legacyUnifiModule: UnifiApiService = {
   },
   authorise: async (req: any): Promise<AxiosResponse> => {
     const authorizeResponse = await unifiApiClient.post(
-      `/api/s/${config.unifiSiteName}/cmd/stamgr`,
+      `/api/s/${config.unifiSiteIdentifier}/cmd/stamgr`,
       JSON.stringify({
         cmd: 'authorize-guest',
         mac: req.session.macAddr,
@@ -40,7 +40,7 @@ export const legacyUnifiModule: UnifiApiService = {
   },
 };
 
-export const modernUnifiModule: UnifiApiService = {
+export const integratedUnifiModule: UnifiApiService = {
   login: async (): Promise<AxiosResponse> => {
     const loginResponse = await unifiApiClient.post('/api/auth/login', {
       username: config.unifiUsername,
