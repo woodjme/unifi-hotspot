@@ -27,11 +27,11 @@ authoriseRouter.route('/').post(async (req: Request, res: Response) => {
     logger.debug('Starting Unifi Device Authorisation Attempt');
     await selectedModules.authorise(req);
 
-    logger.debug(`Redirecting to  ${config.redirectUrl}`);
-    res.redirect(config.redirectUrl);
-
     logger.debug('Starting Unifi Logout Attempt');
     await selectedModules.logout();
+
+    logger.debug(`Redirecting to  ${config.redirectUrl}`);
+    res.redirect(config.redirectUrl);
   } catch (err) {
     res.status(500).json({
       err: {
