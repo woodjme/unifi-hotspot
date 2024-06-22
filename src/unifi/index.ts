@@ -13,7 +13,7 @@ export const legacyUnifiModule: UnifiApiService = {
     });
 
     if (loginResponse.data.meta.rc === 'ok') {
-      logger.info('Unifi Login Successful');
+      logger.debug('Unifi Login Successful');
       return loginResponse;
     } else {
       throw new Error('Unifi Login Failed: Incorrect Response');
@@ -28,8 +28,7 @@ export const legacyUnifiModule: UnifiApiService = {
       }),
     );
     if (authorizeResponse.data.meta.rc === 'ok') {
-      logger.info('Unifi Device Authorisation Successful');
-      logger.info(authorizeResponse.data);
+      logger.debug('Unifi Device Authorisation Successful');
       return authorizeResponse;
     } else {
       throw new Error('Unifi Device Authorisation Failed: Incorrect Response');

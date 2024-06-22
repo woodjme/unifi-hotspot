@@ -19,12 +19,12 @@ const instance = axios.create({
 // Request interceptor
 instance.interceptors.request.use(
   (request) => {
-    logger.info(
+    logger.debug(
       `Starting Request: ${request.method?.toUpperCase()} ${request.baseURL}${request.url}`,
     );
-    logger.info(`Request Headers: ${JSON.stringify(request.headers)}`);
+    logger.debug(`Request Headers: ${JSON.stringify(request.headers)}`);
     if (request.data) {
-      logger.info(`Request Data: ${JSON.stringify(request.data)}`);
+      logger.debug(`Request Data: ${JSON.stringify(request.data)}`);
     }
     return request;
   },
@@ -40,7 +40,7 @@ instance.interceptors.response.use(
     logger.info(
       `Response from ${response.config.url}: ${response.status} ${response.statusText}`,
     );
-    logger.info(`Response Data: ${JSON.stringify(response.data)}`);
+    logger.debug(`Response Data: ${JSON.stringify(response.data)}`);
     return response;
   },
   (error) => {
