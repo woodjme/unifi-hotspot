@@ -40,7 +40,7 @@ const config: Config = {
     UnifiControllerType.Standalone,
   unifiSiteIdentifier:
     process.env.UNIFI_SITE_IDENTIFIER || process.env.SITENAME || 'default',
-  sessionSecret: process.env.sessionSecret || 'secret',
+  sessionSecret: process.env.SESSION_SECRET || 'secret',
   auth: process.env.AUTH || 'none',
   redirectUrl: process.env.REDIRECTURL || 'https://guestgate.cloud/',
   logAuthDriver:
