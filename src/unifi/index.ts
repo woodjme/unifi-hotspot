@@ -52,6 +52,8 @@ export const integratedUnifiModule: UnifiApiService = {
       permissions &&
       permissions['network.management']?.includes('hotspotoperator')
     ) {
+      unifiApiClient.defaults.headers.common['x-csrf-token'] =
+        loginResponse.headers['x-csrf-token'];
       return loginResponse;
     } else {
       throw new Error(
@@ -67,7 +69,7 @@ export const integratedUnifiModule: UnifiApiService = {
     return authorizeResponse;
   },
   logout: async (): Promise<AxiosResponse> => {
-    const logoutResponse = await unifiApiClient.post('/api/logout');
+    const logoutResponse = await unifiApiClient.post('/api/auth/logout');
     return logoutResponse;
   },
 };

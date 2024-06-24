@@ -79,6 +79,8 @@ function validateConfig(): void {
   }
 
   logger.debug('Configuration is valid');
+
+  // If integrated ignore site identifier
 }
 
 export { config, validateConfig, checkForRequiredEnvVars };

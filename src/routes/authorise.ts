@@ -24,8 +24,11 @@ authoriseRouter.route('/').post(async (req: Request, res: Response) => {
       await logAuth(req.body);
     }
 
-    logger.debug('Starting Unifi Device Authorisation Attempt');
-    await selectedModules.authorise(req);
+    // logger.debug('Starting Unifi Device Authorisation Attempt');
+    // await selectedModules.authorise(req);
+
+    // sleep 10s
+    await new Promise((r) => setTimeout(r, 10000));
 
     logger.debug('Starting Unifi Logout Attempt');
     await selectedModules.logout();
