@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import { logger } from '../utils/logger';
 import { webhook, googleSheets } from '../utils/logAuthDrivers';
 import { config, UnifiControllerType } from '../utils/config';
+import { createAxiosInstance } from '../utils/axios';
 
 import { UnifiApiService } from '../interfaces/UnifiApiService';
 import { standaloneUnifiModule, integratedUnifiModule } from '../unifi/index';
@@ -17,21 +18,22 @@ const selectedModules = unifiAuthServices[config.unifiControllerType];
 
 authoriseRouter.route('/').post(async (req: Request, res: Response) => {
   try {
+    const unifiApiClient = createAxiosInstance();
     logger.debug('Starting Unifi Login Attempt');
-    await selectedModules.login();
+    await selectedModules.login(unifiApiClient);
 
     if (config.logAuthDriver) {
       await logAuth(req.body);
     }
 
-    // logger.debug('Starting Unifi Device Authorisation Attempt');
-    // await selectedModules.authorise(req);
+    logger.debug('Starting Unifi Device Authorisation Attempt');
+    await selectedModules.authorise(unifiApiClient, req);
 
     // sleep 10s
-    await new Promise((r) => setTimeout(r, 10000));
+    // await new Promise((r) => setTimeout(r, 10000));
 
     logger.debug('Starting Unifi Logout Attempt');
-    await selectedModules.logout();
+    await selectedModules.logout(unifiApiClient);
 
     logger.debug(`Redirecting to  ${config.redirectUrl}`);
     res.redirect(config.redirectUrl);

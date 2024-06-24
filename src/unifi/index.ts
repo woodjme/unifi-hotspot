@@ -1,12 +1,11 @@
 // standaloneUnifiModule.ts
-import { AxiosResponse } from 'axios';
+import { AxiosInstance, AxiosResponse } from 'axios';
 import { UnifiApiService } from '../interfaces/UnifiApiService';
 import { logger } from '../utils/logger';
-import unifiApiClient from '../utils/axios';
 import { config } from '../utils/config';
 
 export const standaloneUnifiModule: UnifiApiService = {
-  login: async (): Promise<AxiosResponse> => {
+  login: async (unifiApiClient: AxiosInstance): Promise<AxiosResponse> => {
     const loginResponse = await unifiApiClient.post('/api/login', {
       username: config.unifiUsername,
       password: config.unifiPassword,
@@ -19,7 +18,10 @@ export const standaloneUnifiModule: UnifiApiService = {
       throw new Error('Unifi Login Failed: Incorrect Response');
     }
   },
-  authorise: async (req: any): Promise<AxiosResponse> => {
+  authorise: async (
+    unifiApiClient: AxiosInstance,
+    req: any,
+  ): Promise<AxiosResponse> => {
     const authorizeResponse = await unifiApiClient.post(
       `/api/s/${config.unifiSiteIdentifier}/cmd/stamgr`,
       JSON.stringify({
@@ -34,14 +36,14 @@ export const standaloneUnifiModule: UnifiApiService = {
       throw new Error('Unifi Device Authorisation Failed: Incorrect Response');
     }
   },
-  logout: async (): Promise<AxiosResponse> => {
+  logout: async (unifiApiClient: AxiosInstance): Promise<AxiosResponse> => {
     const logoutResponse = await unifiApiClient.post('/api/logout');
     return logoutResponse;
   },
 };
 
 export const integratedUnifiModule: UnifiApiService = {
-  login: async (): Promise<AxiosResponse> => {
+  login: async (unifiApiClient: AxiosInstance): Promise<AxiosResponse> => {
     const loginResponse = await unifiApiClient.post('/api/auth/login', {
       username: config.unifiUsername,
       password: config.unifiPassword,
@@ -61,14 +63,17 @@ export const integratedUnifiModule: UnifiApiService = {
       );
     }
   },
-  authorise: async (req: any): Promise<AxiosResponse> => {
+  authorise: async (
+    unifiApiClient: AxiosInstance,
+    req: any,
+  ): Promise<AxiosResponse> => {
     const authorizeResponse = await unifiApiClient.post(
       `/proxy/network/api/s/default/cmd/stamgr`,
       req.body,
     );
     return authorizeResponse;
   },
-  logout: async (): Promise<AxiosResponse> => {
+  logout: async (unifiApiClient: AxiosInstance): Promise<AxiosResponse> => {
     const logoutResponse = await unifiApiClient.post('/api/auth/logout');
     return logoutResponse;
   },

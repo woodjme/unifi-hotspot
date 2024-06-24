@@ -1,7 +1,10 @@
-import { AxiosResponse } from 'axios';
+import { AxiosResponse, AxiosInstance } from 'axios';
 
 export interface UnifiApiService {
-  login: () => Promise<AxiosResponse>;
-  authorise: (req: any) => Promise<AxiosResponse>;
-  logout: () => Promise<AxiosResponse>;
+  login: (unifiApiClient: AxiosInstance) => Promise<AxiosResponse>;
+  authorise: (
+    unifiApiClient: AxiosInstance,
+    req: any,
+  ) => Promise<AxiosResponse>;
+  logout: (unifiApiClient: AxiosInstance) => Promise<AxiosResponse>;
 }
