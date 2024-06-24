@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import { config } from '../utils/config';
+import { logger } from '../utils/logger';
 const indexRouter = express.Router();
 
 indexRouter.route('/').get((req: Request, res: Response) => {
@@ -8,6 +9,7 @@ indexRouter.route('/').get((req: Request, res: Response) => {
   req.session.time = req.query.t as string;
   req.session.url = req.query.url as string;
   req.session.ssid = req.query.ssid as string;
+  logger.debug(`Session: ${JSON.stringify(req.session)}`);
 
   switch (config.auth) {
     case 'none':
