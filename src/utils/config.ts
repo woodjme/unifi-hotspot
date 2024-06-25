@@ -85,6 +85,14 @@ function validateConfig(): void {
     process.exit(1);
   }
 
+  // Validate Auth
+  if (!Object.values(Auth).includes(config.auth)) {
+    logger.error(
+      `Invalid value for AUTH. Expected one of: ${Object.values(Auth).join(', ')}`,
+    );
+    process.exit(1);
+  }
+
   logger.debug('Configuration is valid');
 
   // If integrated ignore site identifier
