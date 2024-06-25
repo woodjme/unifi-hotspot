@@ -31,5 +31,8 @@ app.get('/', (req: Request, res: Response) => {
 });
 app.use(`/guest/s/${unifiSiteIdentifier}/`, indexRouter);
 app.use('/authorise', authoriseRouter);
+app.get('/health', (req: Request, res: Response) => {
+  res.send('OK');
+});
 
 export default app;
