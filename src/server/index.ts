@@ -9,6 +9,9 @@ import { expressPino } from '../utils/logger';
 const app = express();
 const unifiSiteIdentifier = config.unifiSiteIdentifier;
 
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
 // middleware
 app.use(expressPino);
 app.use(express.static('public'));
@@ -31,6 +34,10 @@ app.get('/', (req: Request, res: Response) => {
 });
 app.use(`/guest/s/${unifiSiteIdentifier}/`, indexRouter);
 app.use('/authorise', authoriseRouter);
+app.get('/connecting', (req: Request, res: Response) => {
+  res.render('connecting', { redirectUrl: config.redirectUrl });
+});
+
 app.get('/health', (req: Request, res: Response) => {
   res.send('OK');
 });

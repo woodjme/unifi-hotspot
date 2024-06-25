@@ -1,56 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <title>You are Connected!</title>
     <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        text-align: center;
+      }
+      .spinner {
+        margin: 20px auto;
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(0, 0, 0, 0.1);
+        border-top: 5px solid #000;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
         }
-        .container {
-            text-align: center;
+        100% {
+          transform: rotate(360deg);
         }
-        .spinner {
-            margin: 20px auto;
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(0, 0, 0, 0.1);
-            border-top: 5px solid #000;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        small {
-            display: block;
-            margin-top: 20px;
-            font-size: 0.8em;
-            color: #666;
-        }
+      }
+      small {
+        display: block;
+        margin-top: 20px;
+        font-size: 0.8em;
+        color: #666;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>You are Connected!</h1>
-        <p>Welcome to our network. You are now online and ready to browse.</p>
-        <p>You can close this page and start enjoying your internet connection.</p>
-        <div class="spinner"></div>
-        <small>Are you looking for a hosted hotspot solution for your business? Visit <a href="https://guestgate.cloud" target="_blank">guestgate.cloud</a></small>
+      <h1>You are Connected!</h1>
+      <p>Welcome to our network. You are now online and ready to browse.</p>
+      <p>
+        You can close this page and start enjoying your internet connection.
+      </p>
+      <div class="spinner"></div>
+      <small
+        >Are you looking for a hosted hotspot solution for your business? Visit
+        <a href="https://guestgate.cloud" target="_blank"
+          >guestgate.cloud</a
+        ></small
+      >
     </div>
     <script>
-        // Function to stop the spinner after a short delay for better user experience
-        function stopSpinner() {
-            document.querySelector('.spinner').style.display = 'none';
-        }
+      // Function to stop the spinner after a short delay for better user experience
+      function stopSpinner() {
+        document.querySelector('.spinner').style.display = 'none';
+      }
 
-        // Stop the spinner after 3 seconds
-        setTimeout(stopSpinner, 3000);
+      // Stop the spinner after 3 seconds
+      setTimeout(stopSpinner, 3000);
     </script>
-</body>
+  </body>
 </html>

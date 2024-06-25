@@ -49,7 +49,7 @@ const config: Config = {
     process.env.UNIFI_SITE_IDENTIFIER || process.env.SITENAME || 'default',
   sessionSecret: process.env.SESSION_SECRET || 'secret',
   auth: (process.env.AUTH as Auth) || Auth.Simple,
-  redirectUrl: process.env.REDIRECTURL || 'https://guestgate.cloud/',
+  redirectUrl: process.env.REDIRECTURL || '/success.html',
   logAuthDriver:
     (process.env.LOG_AUTH_DRIVER as LogAuthDriver) || LogAuthDriver.None,
   port: process.env.PORT || '4545',

@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        text-align: center;
+      }
+      .spinner {
+        margin: 20px auto;
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(0, 0, 0, 0.1);
+        border-top: 5px solid #000;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Our Network</h1>
+      <p id="status">Hang tight, we're connecting you to the internet...</p>
+      <div class="spinner"></div>
+    </div>
+    <script>
+      // URLs to check for internet connectivity
+      const checkUrls = [
+        'http://captive.apple.com/hotspot-detect.html',
+        'http://www.apple.com/library/test/success.html',
+        'http://connectivitycheck.gstatic.com/generate_204',
+        'http://clients3.google.com/generate_204',
+        'http://www.msftconnecttest.com/connecttest.txt',
+        'http://www.msftncsi.com/ncsi.txt',
+        'http://nmcheck.gnome.org/check_network_status.txt',
+      ];
+
+      // Function to check internet connectivity using Fetch API
+      async function checkInternet() {
+        const fetchRequests = checkUrls.map((url) =>
+          fetch(url, { method: 'GET', mode: 'no-cors' })
+            .then(
+              (response) =>
+                response.ok ||
+                response.type === 'opaque' ||
+                response.status === 204,
+            )
+            .catch(() => false),
+        );
+
+        try {
+          await Promise.any(fetchRequests);
+          return true;
+        } catch {
+          return false;
+        }
+      }
+
+      // Function to redirect the user
+      function redirectUser() {
+        window.location.href = '<%= redirectUrl %>';
+      }
+
+      // Retry logic
+      async function retryCheckInternet() {
+        const isConnected = await checkInternet();
+        if (isConnected) {
+          document.getElementById('status').textContent =
+            'You are connected! Taking you to your destination...';
+          redirectUser();
+        } else {
+          document.getElementById('status').textContent =
+            'Almost there! Checking again...';
+          setTimeout(retryCheckInternet, 3000); // Retry after 3 seconds
+        }
+      }
+
+      // Start the retry loop
+      retryCheckInternet();
+    </script>
+  </body>
+</html>
