@@ -44,18 +44,22 @@
       // URLs to check for internet connectivity
       const checkUrls = [
         'http://captive.apple.com/hotspot-detect.html',
-        'http://www.apple.com/library/test/success.html',
         'http://connectivitycheck.gstatic.com/generate_204',
-        'http://clients3.google.com/generate_204',
         'http://www.msftconnecttest.com/connecttest.txt',
-        'http://www.msftncsi.com/ncsi.txt',
         'http://nmcheck.gnome.org/check_network_status.txt',
       ];
+
+      let successCount = 0;
+
+      // Function to generate random string to prevent caching
+      function getRandomString() {
+        return Math.random().toString(36).substring(2, 15);
+      }
 
       // Function to check internet connectivity using Fetch API
       async function checkInternet() {
         const fetchRequests = checkUrls.map((url) =>
-          fetch(url, { method: 'GET', mode: 'no-cors' })
+          fetch(`${url}?rand=${getRandomString()}`, { method: 'GET', mode: 'no-cors' })
             .then(
               (response) =>
                 response.ok ||
@@ -80,12 +84,21 @@
 
       // Retry logic
       async function retryCheckInternet() {
+        await new Promise((r) => setTimeout(r, 1000));
         const isConnected = await checkInternet();
         if (isConnected) {
-          document.getElementById('status').textContent =
-            'You are connected! Taking you to your destination...';
-          redirectUser();
+          successCount++;
+          if (successCount >= 3) {
+            document.getElementById('status').textContent =
+              'You are connected! Taking you to your destination...';
+            redirectUser();
+          } else {
+            document.getElementById('status').innerHTML =
+              `Hang tight, we're connecting you to the internet...<br>Almost there! ${3 - successCount} more check${3 - successCount == 1 ? '' : 's'}...`;
+            setTimeout(retryCheckInternet, 1500); // Retry after 3 seconds
+          }
         } else {
+          successCount = 0;
           document.getElementById('status').textContent =
             'Almost there! Checking again...';
           setTimeout(retryCheckInternet, 3000); // Retry after 3 seconds

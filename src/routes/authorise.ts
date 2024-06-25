@@ -31,12 +31,11 @@ authoriseRouter.route('/').post(async (req: Request, res: Response) => {
 
     // sleep 10s
     // await new Promise((r) => setTimeout(r, 10000));
+    logger.debug(`Redirecting to ${'./connecting'}`);
+    res.redirect('./connecting');
 
     logger.debug('Starting Unifi Logout Attempt');
     await selectedModules.logout(unifiApiClient);
-
-    logger.debug(`Redirecting to  ${config.redirectUrl}`);
-    res.redirect(config.redirectUrl);
   } catch (err) {
     res.status(500).json({
       err: {
