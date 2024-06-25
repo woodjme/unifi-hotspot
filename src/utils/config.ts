@@ -18,6 +18,13 @@ export enum UnifiControllerType {
   Integrated = 'integrated',
 }
 
+export enum Auth {
+  None = 'none',
+  Simple = 'simple',
+  UserInfo = 'userInfo',
+  Custom = 'custom',
+}
+
 type Config = {
   unifiUsername: string;
   unifiPassword: string;
@@ -25,7 +32,7 @@ type Config = {
   unifiControllerType: UnifiControllerType;
   unifiSiteIdentifier: string;
   sessionSecret: string;
-  auth?: string;
+  auth: Auth;
   redirectUrl: string;
   logAuthDriver: LogAuthDriver;
   port?: string;
@@ -41,7 +48,7 @@ const config: Config = {
   unifiSiteIdentifier:
     process.env.UNIFI_SITE_IDENTIFIER || process.env.SITENAME || 'default',
   sessionSecret: process.env.SESSION_SECRET || 'secret',
-  auth: process.env.AUTH || 'none',
+  auth: (process.env.AUTH as Auth) || Auth.Simple,
   redirectUrl: process.env.REDIRECTURL || 'https://guestgate.cloud/',
   logAuthDriver:
     (process.env.LOG_AUTH_DRIVER as LogAuthDriver) || LogAuthDriver.None,
