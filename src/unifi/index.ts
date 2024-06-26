@@ -48,12 +48,9 @@ export const integratedUnifiModule: UnifiApiService = {
       username: config.unifiUsername,
       password: config.unifiPassword,
     });
-
-    const permissions = loginResponse.data.permissions;
-    if (
-      permissions &&
-      permissions['network.management']?.includes('hotspotoperator')
-    ) {
+    unifiApiClient.defaults.headers.common['x-csrf-token'] =
+      loginResponse.headers['x-csrf-token'];
+    if (loginResponse.status === 200) {
       unifiApiClient.defaults.headers.common['x-csrf-token'] =
         loginResponse.headers['x-csrf-token'];
       return loginResponse;
@@ -69,7 +66,10 @@ export const integratedUnifiModule: UnifiApiService = {
   ): Promise<AxiosResponse> => {
     const authorizeResponse = await unifiApiClient.post(
       `/proxy/network/api/s/default/cmd/stamgr`,
-      req.body,
+      JSON.stringify({
+        cmd: 'authorize-guest',
+        mac: req.session.macAddr,
+      }),
     );
     return authorizeResponse;
   },
