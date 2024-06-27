@@ -1,6 +1,6 @@
 # unifi-hotspot
 
-This repository hosts a versatile external captive portal server designed for authorizing Wi-Fi guests on Unifi products. The application supports flexible user data storage solutions, including integration with Google Sheets and webhooks, making it ideal for various deployment scenarios.
+This repository hosts a versatile external captive portal server designed for authorizing Wi-Fi guests on Unifi products. The application supports flexible user data storage solutions, including integration with Google Sheets and webhooks.
 
 > **Exciting News!**
 >
