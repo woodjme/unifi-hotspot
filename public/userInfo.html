@@ -1,48 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
     <title>Portal Page - Basic Auth</title>
     <style>
-      .centered {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        text-align: center;
+      }
+      .spinner {
+        margin: 20px auto;
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(0, 0, 0, 0.1);
+        border-top: 5px solid #000;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      input {
+        font-size: 2em;
+        padding: 0.5em;
+        margin: 1em 0;
+      }
+      label {
+        font-size: 2em;
+        margin: 0.5em 0;
+        display: block;
       }
     </style>
   </head>
   <body>
-    <form class="centered" name="login" action="/authorise" method="post">
-      <label style="font-size: 4em" for="name">Name:</label>
-      <input
-        style="font-size: 4em"
-        id="name"
-        type="text"
-        name="name"
-        required
-      />
-      <br />
-      <label style="font-size: 4em" for="email">Email:</label>
-      <input
-        style="font-size: 4em"
-        id="email"
-        type="email"
-        name="email"
-        required
-      />
-      <br />
-      <input
-        style="font-size: 4em"
-        id="submit"
-        type="submit"
-        value="Connect to Wi-Fi"
-      />
-    </form>
+    <div class="container">
+      <form name="login" action="/authorise" method="post">
+        <label for="name">Name:</label>
+        <input id="name" type="text" name="name" autocomplete="name" required />
+        <br />
+        <label for="email">Email:</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          autocomplete="email"
+          required
+        />
+        <br />
+        <input id="submit" type="submit" value="Connect to Wi-Fi" />
+      </form>
+      <div class="spinner" id="spinner" style="display: none"></div>
+    </div>
     <script>
-      //Change button text on press
-      document.getElementById("submit").onclick = function () {
-        this.value = "Connecting...";
+      document.getElementById('submit').onclick = function () {
+        this.value = 'Connecting...';
+        document.getElementById('spinner').style.display = 'block';
+        document.getElementById('submit').style.display = 'none';
       };
     </script>
   </body>

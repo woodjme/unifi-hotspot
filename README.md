@@ -1,23 +1,25 @@
 # unifi-hotspot
 
-The purpose of this repo is to provide a flexible, Node.js based external portal server for authorising Wi-Fi guests on Unifi products. Out of the box is currently support storing user information in Google Sheets or posting it via a webhook.
+This repository hosts a versatile external captive portal server designed for authorizing Wi-Fi guests on Unifi products. The application supports flexible user data storage solutions, including integration with Google Sheets and webhooks, making it ideal for various deployment scenarios.
 
-## What's new in V2
+> **Exciting News!**
+>
+> Coming soon! Simplify your experience with our upcoming hosted version of this application. Perfect for those who prefer a hassle-free setup or are willing to pay a premium for a managed solution. Don't miss out on early access—sign up now [here](https://guestgate.cloud)!
 
-### BREAKING CHANGES
+## What's New in V3
 
-* The `USERNAME` environment variable has been renamed to `UNIFI_USER`
-* The `PASSWORD` environment variable has been renamed to `UNIFI_PASS`
-* Changed `basic` value for `AUTH_ENV` to `userInfo`
+### Breaking Changes
+
+- The `URI` environment variable has been renamed to `UNIFI_CONTROLLER_URL`.
+- The `SITENAME` environment variable has been renamed to `UNIFI_SITE_IDENTIFIER`.
+- The `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL` and `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` environment variables have been replaced with `LOG_AUTH_GOOGLE_CREDENTIALS`.
 
 ### Features and Improvements
 
-* Bumped to NodeJS Version 18
-* Removed `request` and `request-promise` packages in favour of `axios`
-* Rewritten authorisation controller
-* 🎉 Store the contents of the hotspot form using `LOG_AUTH` drivers 🎉
-* Listen on port given in env
+- Added support for devices with built-in controllers such as the Unifi Dream Machine.
+- Upgraded to NodeJS Version 20.
+- Codebase rewritten in Typescript.
 
 ## Documentation
 
-[Documentation](https://docs.unifi-hotspot.jamiewood.io)
+For detailed information on how to set up and use this application, please refer to the [Documentation](https://docs.unifi-hotspot.jamiewood.io).
