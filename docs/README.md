@@ -182,3 +182,17 @@ You must provide `UNIFI_USER`, `UNIFI_PASS`, and `UNIFI_CONTROLLER_URL` for the 
 | `LOG_AUTH_DRIVER`       |             `googlesheets`             |       The driver to use to capture user data |
 | `LOG_AUTH_$DRIVER_$OPT` |                 `n/a`                  |         Options set for each log_auth driver |
 | `PORT`                  |                  `80`                  |           The port to run the application on |
+
+### UNIFI_USER
+
+A note for users using a UDM device. There is a predefined role called `hotspot_operator` which you would assume gives you enough permissions to authorise a Guest. At the moment, it seems it doesn't using this
+will result in permissions error.
+
+### UNIFI_CONTROLLER_TYPE
+
+- `standalone` for self hosted unifi controllers
+- `integrated` for devices such as a Unifi Dream Machine
+
+### UNIFI_SITE_IDENTIFIER
+
+For integrated controller this will always be `default` for `standlone` check the ID in the URL of your Unifi Controller when selecting a site
