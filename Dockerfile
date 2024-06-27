@@ -16,7 +16,7 @@ FROM node:20-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 
 COPY --from=build /usr/src/app/dist /usr/src/app/
 
