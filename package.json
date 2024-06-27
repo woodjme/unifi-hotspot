@@ -1,6 +1,6 @@
 {
   "name": "unifi-hotspot",
-  "version": "3.0.0-beta",
+  "version": "v3.0.0-beta.0",
   "description": "A Unifi Captive Portal",
   "main": "dist/index.js",
   "scripts": {
