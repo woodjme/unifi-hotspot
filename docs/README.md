@@ -6,19 +6,54 @@
 
 ## What's New in V3
 
-### Breaking Changes
-
-- The `URI` environment variable has been renamed to `UNIFI_CONTROLLER_URL`.
-- The `SITENAME` environment variable has been renamed to `UNIFI_SITE_IDENTIFIER`.
-- The `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL` and `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` environment variables have been replaced with `LOG_AUTH_GOOGLE_CREDENTIALS`.
-
 ### Features and Improvements
 
 - Added support for devices with built-in controllers such as the Unifi Dream Machine.
 - Upgraded to NodeJS Version 20.
 - Codebase rewritten in Typescript.
 
+### Breaking Changes
+
+- The `URI` environment variable has been renamed to `UNIFI_CONTROLLER_URL`.
+- The `SITENAME` environment variable has been renamed to `UNIFI_SITE_IDENTIFIER`.
+- The `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_EMAIL` and `LOG_AUTH_GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` environment variables have been replaced with `LOG_AUTH_GOOGLE_CREDENTIALS`.
+
 ## Quick Start Guide
+
+### Configure Unifi Controller
+
+_todo video_
+This step varies quite a bit from controller version to controller version but the idea is:
+
+- Configure a new WLAN and enable Hotspot Portal (sometimes called Guest Control)
+- Go to the landing portal settings page (Insights -> Hotspot -> Landing Page)
+  - Choose External Portal Server and set the Exteral Portal Server to the IP of this service
+  - Enable Show Landing Page
+  - Enable HTTPs Redirect Support
+  - Optionally Enable Domain and Secure Portal
+
+### Setup Captive Portal
+
+#### Clone the repo
+
+```sh
+git clone https://github.com/woodjme/unifi-hotspot.git
+cd unifi-hotspot
+```
+
+#### Install Dependencies
+
+`npm install --omit=dev`
+
+#### Configure Environment
+
+A full list of environment variables can be found [here](#environment-variables).
+
+`cp .env.example .env`
+
+#### Start Service
+
+`npm start`
 
 ### Docker
 
@@ -42,8 +77,6 @@ woodjme/unifi-hotspot
 ```
 
 Once started, navigate to the path `guest/s/$SITENAME/` to test the splash page.
-
-You then need to configure the Unifi portal to point to this container. To do this, go to the `Unifi Control Panel` -> `Guest Control` -> `Enable Guest Control` -> `External Portal Server` -> Add the `IP Address` or `DNS Name` of your server/container host.
 
 ## Authentication
 
@@ -145,7 +178,7 @@ You must provide `UNIFI_USER`, `UNIFI_PASS`, and `UNIFI_CONTROLLER_URL` for the 
 | `UNIFI_SITE_IDENTIFIER` |               `default`                | The site identifier in your Unifi controller |
 | `SESSION_SECRET`        |            `myrandomstring`            |        A secret for the express user session |
 | `AUTH`                  | `none OR userInfo OR simple OR custom` |            The auth page you want to display |
-| `REDIRECTURL`           |          `https://google.com`          |           The page to redirect to after auth |
+| `REDIRECTURL`           |            `/success.html`             |           The page to redirect to after auth |
 | `LOG_AUTH_DRIVER`       |             `googlesheets`             |       The driver to use to capture user data |
 | `LOG_AUTH_$DRIVER_$OPT` |                 `n/a`                  |         Options set for each log_auth driver |
-| `PORT`                  |                 `4545`                 |           The port to run the application on |
+| `PORT`                  |                  `80`                  |           The port to run the application on |
