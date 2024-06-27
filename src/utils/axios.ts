@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { HttpCookieAgent, HttpsCookieAgent } from 'http-cookie-agent';
+import { HttpCookieAgent, HttpsCookieAgent } from 'http-cookie-agent/http';
 import { CookieJar } from 'tough-cookie';
 import { logger } from './logger';
 import { config } from './config';
@@ -9,11 +9,9 @@ export const createAxiosInstance = () => {
 
   const instance = axios.create({
     baseURL: config.unifiControllerUrl,
-    httpAgent: new HttpCookieAgent({
-      jar,
-    }),
+    httpAgent: new HttpCookieAgent({ cookies: { jar } }),
     httpsAgent: new HttpsCookieAgent({
-      jar,
+      cookies: { jar },
       rejectUnauthorized: false,
     }),
   });
