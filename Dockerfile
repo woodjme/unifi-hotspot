@@ -19,6 +19,7 @@ COPY package*.json ./
 RUN npm ci
 
 COPY --from=build /usr/src/app/dist /usr/src/app/
+COPY --from=build /usr/src/app/public /usr/src/app/
 
 #Expose Port
 EXPOSE 4545
