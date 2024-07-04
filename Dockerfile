@@ -20,6 +20,7 @@ RUN npm ci
 
 COPY --from=build /usr/src/app/dist /usr/src/app/
 COPY --from=build /usr/src/app/public /usr/src/app/public
+COPY --from=build /usr/src/app/views /usr/src/app/views
 
 #Expose Port
 EXPOSE 4545
