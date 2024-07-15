@@ -43,7 +43,7 @@ cd unifi-hotspot
 
 #### Install Dependencies
 
-`npm install --omit=dev`
+`npm install --omit=dev --ignore-scripts`
 
 #### Configure Environment
 
