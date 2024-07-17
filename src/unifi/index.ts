@@ -65,7 +65,7 @@ export const integratedUnifiModule: UnifiApiService = {
     req: any,
   ): Promise<AxiosResponse> => {
     const authorizeResponse = await unifiApiClient.post(
-      `/proxy/network/api/s/default/cmd/stamgr`,
+      `/proxy/network/api/s/${config.unifiSiteIdentifier}/cmd/stamgr`,
       JSON.stringify({
         cmd: 'authorize-guest',
         mac: req.session.macAddr,
