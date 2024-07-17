@@ -169,19 +169,21 @@ To configure Google Sheets, the following environment variables must be set:
 
 You must provide `UNIFI_USER`, `UNIFI_PASS`, and `UNIFI_CONTROLLER_URL` for the application to start.
 
-| Name                    |                Example                 |                                  Description |
-| :---------------------- | :------------------------------------: | -------------------------------------------: |
-| `UNIFI_USER`            |                 `ubnt`                 |               Your Unifi controller username |
-| `UNIFI_PASS`            |               `password`               |               Your Unifi controller password |
-| `UNIFI_CONTROLLER_URL`  |    `https://unifi.guestgate.cloud`     |                    Your Unifi controller URL |
-| `UNIFI_CONTROLLER_TYPE` |       `standalone OR integrated`       |                    Your Unifi controller URL |
-| `UNIFI_SITE_IDENTIFIER` |               `default`                | The site identifier in your Unifi controller |
-| `SESSION_SECRET`        |            `myrandomstring`            |        A secret for the express user session |
-| `AUTH`                  | `none OR userInfo OR simple OR custom` |            The auth page you want to display |
-| `REDIRECTURL`           |            `/success.html`             |           The page to redirect to after auth |
-| `LOG_AUTH_DRIVER`       |             `googlesheets`             |       The driver to use to capture user data |
-| `LOG_AUTH_$DRIVER_$OPT` |                 `n/a`                  |         Options set for each log_auth driver |
-| `PORT`                  |                  `80`                  |           The port to run the application on |
+| Name                    |                Example                 |                                      Description |
+| :---------------------- | :------------------------------------: | -----------------------------------------------: |
+| `UNIFI_USER`            |                 `ubnt`                 |                   Your Unifi controller username |
+| `UNIFI_PASS`            |               `password`               |                   Your Unifi controller password |
+| `UNIFI_CONTROLLER_URL`  |    `https://unifi.guestgate.cloud`     |                        Your Unifi controller URL |
+| `UNIFI_CONTROLLER_TYPE` |       `standalone OR integrated`       |                        Your Unifi controller URL |
+| `UNIFI_SITE_IDENTIFIER` |               `default`                |     The site identifier in your Unifi controller |
+| `SESSION_SECRET`        |            `myrandomstring`            |            A secret for the express user session |
+| `AUTH`                  | `none OR userInfo OR simple OR custom` |                The auth page you want to display |
+| `REDIRECTURL`           |            `/success.html`             |               The page to redirect to after auth |
+| `SERVER_SIDE_REDIRECT`  |                `false`                 | Should the server redirect the client after auth |
+| `SHOW_CONNECTING`       |                 `true`                 |          Should the connecting page be displayed |
+| `LOG_AUTH_DRIVER`       |             `googlesheets`             |           The driver to use to capture user data |
+| `LOG_AUTH_$DRIVER_$OPT` |                 `n/a`                  |             Options set for each log_auth driver |
+| `PORT`                  |                  `80`                  |               The port to run the application on |
 
 ### UNIFI_USER
 
