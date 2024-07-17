@@ -34,6 +34,8 @@ type Config = {
   sessionSecret: string;
   auth: Auth;
   redirectUrl: string;
+  serverSideRedirect: string;
+  showConnecting: string;
   logAuthDriver: LogAuthDriver;
   port?: string;
 };
@@ -50,6 +52,8 @@ const config: Config = {
   sessionSecret: process.env.SESSION_SECRET || 'secret',
   auth: (process.env.AUTH as Auth) || Auth.Simple,
   redirectUrl: process.env.REDIRECTURL || '/success.html',
+  serverSideRedirect: process.env.SERVER_SIDE_REDIRECT || 'true',
+  showConnecting: process.env.SHOW_CONNECTING || 'true',
   logAuthDriver:
     (process.env.LOG_AUTH_DRIVER as LogAuthDriver) || LogAuthDriver.None,
   port: process.env.PORT || '4545',

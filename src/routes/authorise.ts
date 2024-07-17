@@ -29,10 +29,20 @@ authoriseRouter.route('/').post(async (req: Request, res: Response) => {
     logger.debug('Starting Unifi Device Authorisation Attempt');
     await selectedModules.authorise(unifiApiClient, req);
 
-    // sleep 10s
-    // await new Promise((r) => setTimeout(r, 10000));
-    logger.debug(`Redirecting to ${'./connecting'}`);
-    res.redirect('./connecting');
+    if (config.showConnecting === 'true') {
+      logger.debug(`Redirecting to ${'./connecting'}`);
+      res.redirect('./connecting');
+    }
+
+    if (
+      config.showConnecting === 'false' &&
+      config.serverSideRedirect === 'true'
+    ) {
+      // sleep 5s
+      await new Promise((r) => setTimeout(r, 5000));
+      logger.debug(`Redirecting to ${config.redirectUrl}`);
+      res.redirect(config.redirectUrl);
+    }
 
     logger.debug('Starting Unifi Logout Attempt');
     await selectedModules.logout(unifiApiClient);
