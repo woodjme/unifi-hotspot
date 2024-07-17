@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { logger } from '../utils/logger';
-import { webhook, googleSheets } from '../utils/logAuthDrivers';
+import { webhook, googleSheets, mailchimp } from '../utils/logAuthDrivers';
 import { config, UnifiControllerType } from '../utils/config';
 import { createAxiosInstance } from '../utils/axios';
 
@@ -55,6 +55,9 @@ const logAuth = async (formData: any): Promise<void> => {
       break;
     case 'googlesheets':
       await googleSheets(formData);
+      break;
+    case 'mailchimp':
+      await mailchimp(formData);
       break;
     default:
       break;
