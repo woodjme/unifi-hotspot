@@ -27,6 +27,7 @@ export const standaloneUnifiModule: UnifiApiService = {
       JSON.stringify({
         cmd: 'authorize-guest',
         mac: req.session.macAddr,
+        ap_mac: req.session.accessPoint,
       }),
     );
     if (authorizeResponse.data.meta.rc === 'ok') {
@@ -69,6 +70,7 @@ export const integratedUnifiModule: UnifiApiService = {
       JSON.stringify({
         cmd: 'authorize-guest',
         mac: req.session.macAddr,
+        ap_mac: req.session.accessPoint,
       }),
     );
     return authorizeResponse;
