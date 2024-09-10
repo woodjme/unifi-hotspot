@@ -2,7 +2,7 @@
 
 > **Exciting News!**
 >
-> Coming soon! I will be offering a hosted version of this application. If you're interested in early access, sign up [here](https://register-interest.guestgate.cloud).
+> Coming soon! I will be offering a hosted version of this application. If you're interested in early access, sign up [here](https://www.guestgate.cloud).
 
 ## What's New in V3
 
@@ -71,7 +71,7 @@ docker run -d \
 -e UNIFI_SITE_IDENTIFIER=default \
 -e SECRET=secretString \
 -e AUTH=none \
--e REDIRECTURL=https://register-interest.guestgate.cloud \
+-e REDIRECTURL=https://www.guestgate.cloud \
 -e PORT=4545 \
 woodjme/unifi-hotspot
 ```

@@ -2,7 +2,7 @@
 
 > **Exciting News!**
 >
-> Coming soon! Simplify your experience with our upcoming hosted version of this application. Perfect for those who prefer a hassle-free setup or are willing to pay a premium for a managed solution. Don't miss out on early access—sign up now [here](https://register-interest.guestgate.cloud)!
+> Coming soon! Simplify your experience with our upcoming hosted version of this application. Perfect for those who prefer a hassle-free setup or are willing to pay a premium for a managed solution. Don't miss out on early access—sign up now [here](https://www.guestgate.cloud)!
 
 A versatile external captive portal server designed for authorizing Wi-Fi guests on Unifi products. It supports flexible user data storage solutions, including integration with Google Sheets and webhooks.
 
