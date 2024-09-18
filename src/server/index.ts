@@ -38,6 +38,11 @@ app.get('/connecting', (req: Request, res: Response) => {
   res.render('connecting', { redirectUrl: config.redirectUrl });
 });
 
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.send('User-agent: *\nDisallow: /');
+});
+
 app.get('/health', (req: Request, res: Response) => {
   res.send('OK');
 });
