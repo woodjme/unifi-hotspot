@@ -102,4 +102,11 @@ function validateConfig(): void {
   // If integrated ignore site identifier
 }
 
-export { config, validateConfig, checkForRequiredEnvVars };
+function maskSensitiveConfig(config: Config): Partial<Config> {
+  return {
+    ...config,
+    unifiPassword: '****',
+  };
+}
+
+export { config, validateConfig, checkForRequiredEnvVars, maskSensitiveConfig };

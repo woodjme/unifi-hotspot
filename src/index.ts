@@ -9,12 +9,13 @@ import {
   config,
   validateConfig,
   checkForRequiredEnvVars,
+  maskSensitiveConfig,
 } from './utils/config';
 import { logger } from './utils/logger';
 
 checkForRequiredEnvVars();
 validateConfig();
-logger.info(config);
+logger.info(maskSensitiveConfig(config));
 
 import server from './server';
 const port = config.port;
