@@ -14,10 +14,17 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 
+const prettyLogger = pino({
+  level: 'info',
+  transport: {
+    target: 'pino-pretty',
+  },
+});
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const expressPino = require('pino-http')({
   logger: logger,
   useLevel: 'trace',
 });
 
-export { logger, expressPino };
+export { logger, prettyLogger, expressPino };

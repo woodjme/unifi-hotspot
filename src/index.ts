@@ -11,7 +11,17 @@ import {
   checkForRequiredEnvVars,
   maskSensitiveConfig,
 } from './utils/config';
-import { logger } from './utils/logger';
+import { logger, prettyLogger } from './utils/logger';
+
+// Advertising hosted version
+prettyLogger.info(`
+  ===============================================
+  🌐  \x1b[36mLooking for a hassle-free setup?\x1b[0m
+  Check out our \x1b[32mhosted version\x1b[0m of this app for an easy, managed solution!
+  
+  \x1b[34mVisit: https://www.guestgate.cloud\x1b[0m
+  ===============================================
+  `);
 
 checkForRequiredEnvVars();
 validateConfig();
