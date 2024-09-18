@@ -1,8 +1,6 @@
 # Documentation
 
-> **Exciting News!**
->
-> Coming soon! I will be offering a hosted version of this application. If you're interested in early access, sign up [here](https://www.guestgate.cloud).
+> Simplify your experience with our newly launched hosted version of this application. Perfect for those who prefer a hassle-free setup or are willing to pay a premium for a managed solution. Don’t miss out—get started today here![here](https://www.guestgate.cloud)!
 
 ## What's New in V3
 
