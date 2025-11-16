@@ -2,13 +2,19 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 import { UnifiApiService } from '../interfaces/UnifiApiService';
 import { logger } from '../utils/logger';
-import { config } from '../utils/config';
+import { config, ControllerConfig } from '../utils/config';
 
 export const standaloneUnifiModule: UnifiApiService = {
-  login: async (unifiApiClient: AxiosInstance): Promise<AxiosResponse> => {
+  login: async (
+    unifiApiClient: AxiosInstance,
+    controllerConfig?: ControllerConfig,
+  ): Promise<AxiosResponse> => {
+    const username = controllerConfig?.username || config.unifiUsername;
+    const password = controllerConfig?.password || config.unifiPassword;
+
     const loginResponse = await unifiApiClient.post('/api/login', {
-      username: config.unifiUsername,
-      password: config.unifiPassword,
+      username,
+      password,
     });
 
     if (loginResponse.data.meta.rc === 'ok') {
@@ -21,9 +27,13 @@ export const standaloneUnifiModule: UnifiApiService = {
   authorise: async (
     unifiApiClient: AxiosInstance,
     req: any,
+    controllerConfig?: ControllerConfig,
   ): Promise<AxiosResponse> => {
+    const siteIdentifier =
+      controllerConfig?.siteIdentifier || config.unifiSiteIdentifier;
+
     const authorizeResponse = await unifiApiClient.post(
-      `/api/s/${config.unifiSiteIdentifier}/cmd/stamgr`,
+      `/api/s/${siteIdentifier}/cmd/stamgr`,
       JSON.stringify({
         cmd: 'authorize-guest',
         mac: req.session.macAddr,
@@ -44,10 +54,16 @@ export const standaloneUnifiModule: UnifiApiService = {
 };
 
 export const integratedUnifiModule: UnifiApiService = {
-  login: async (unifiApiClient: AxiosInstance): Promise<AxiosResponse> => {
+  login: async (
+    unifiApiClient: AxiosInstance,
+    controllerConfig?: ControllerConfig,
+  ): Promise<AxiosResponse> => {
+    const username = controllerConfig?.username || config.unifiUsername;
+    const password = controllerConfig?.password || config.unifiPassword;
+
     const loginResponse = await unifiApiClient.post('/api/auth/login', {
-      username: config.unifiUsername,
-      password: config.unifiPassword,
+      username,
+      password,
     });
     unifiApiClient.defaults.headers.common['x-csrf-token'] =
       loginResponse.headers['x-csrf-token'];
@@ -64,9 +80,13 @@ export const integratedUnifiModule: UnifiApiService = {
   authorise: async (
     unifiApiClient: AxiosInstance,
     req: any,
+    controllerConfig?: ControllerConfig,
   ): Promise<AxiosResponse> => {
+    const siteIdentifier =
+      controllerConfig?.siteIdentifier || config.unifiSiteIdentifier;
+
     const authorizeResponse = await unifiApiClient.post(
-      `/proxy/network/api/s/${config.unifiSiteIdentifier}/cmd/stamgr`,
+      `/proxy/network/api/s/${siteIdentifier}/cmd/stamgr`,
       JSON.stringify({
         cmd: 'authorize-guest',
         mac: req.session.macAddr,
