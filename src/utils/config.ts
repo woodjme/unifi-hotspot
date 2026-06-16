@@ -11,6 +11,7 @@ export enum LogAuthDriver {
   None = 'none',
   Webhook = 'webhook',
   Googlesheets = 'googlesheets',
+  Mailchimp = 'mailchimp',
 }
 
 export enum UnifiControllerType {
