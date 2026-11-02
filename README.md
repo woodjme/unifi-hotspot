@@ -1,6 +1,6 @@
 # unifi-hotspot
 
-> Simplify your experience with our newly launched hosted version of this application. Perfect for those who prefer a hassle-free setup or are willing to pay a premium for a managed solution. Don’t miss out—get started today here![here](https://www.guestgate.cloud)!
+> **Want this without running a server?** [GuestGate](https://www.guestgate.cloud) is the hosted version, from the same author. It connects with a UniFi API key, so it works with MFA-protected accounts and needs no port forwarding, and adds branded login pages, a guest list, webhooks and Zapier. [Start a free trial](https://app.guestgate.cloud/register).
 
 A versatile external captive portal server designed for authorizing Wi-Fi guests on Unifi products. It supports flexible user data storage solutions, including integration with Google Sheets and webhooks.
 
